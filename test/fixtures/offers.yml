@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  outletID: 1
+  category: MyString
+  content: MyString
+  from: 2017-03-02
+  to: 2017-03-02
+
+two:
+  outletID: 1
+  category: MyString
+  content: MyString
+  from: 2017-03-02
+  to: 2017-03-02

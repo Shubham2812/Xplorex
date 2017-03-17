@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Visited Places </title>
+	<style type="text/css">
+		.timeline{
+			padding: 5px;
+			margin: 5px;
+		}
+	</style>
+</head>
+<body>
+	<br>
+	<% @reviews.each do |place| %>
+		<div class="timeline">
+		<li style="list-style: none; border: 1px solid brown; padding: 5px; background-color: #99ffff"> <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRaivOGlUF9pKmKhYrk2GwZhrtBE21s7Fb3jCQJMjwnUx_rHoTw" style="height: 40px; width: 40px;"> <span style="color: grey"> visited <span style="font-size: 30px; color: blue"> <%= getFood(place.outletID).name %></span> at <span style="font-size: 20px; color: green"> <%= place.created_at.hour %>:<%= place.created_at.min %> </span> on <span style="font-size: 20px; color: green"> <%= place.created_at.day %>/<%= place.created_at.month %>/<%= place.created_at.year %> </span> </span> </li>
+		</div>
+		<div class="timeline">
+		<% if place.content != nil %>
+			<li style="list-style: none; border: 1px solid brown; padding: 5px; background-color: #ffff80"> <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRvxQRq9ogKJxDkH5pzHwE-Z43MfZTr_LXbresCpmHBi-MM74McRg" style="height: 40px; width: 40px;"> <span style="color: grey"> reviewed <span style="font-size: 30px; color: blue"> <%= getFood(place.outletID).name %></span> at <span style="font-size: 20px; color: green"> <%= place.created_at.hour %>:<%= place.created_at.min %> </span> on <span style="font-size: 20px; color: green"> <%= place.created_at.day %>/<%= place.created_at.month %>/<%= place.created_at.year %> </span> </span>
+			</li>
+		<% end %>
+		</div>
+	<% end %>
+</body>
+</html>
+

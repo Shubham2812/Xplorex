@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ownerID: 1
+  tag: MyString
+  location: MyString
+  photo: MyString
+  description: MyString
+  menu: MyString
+
+two:
+  ownerID: 1
+  tag: MyString
+  location: MyString
+  photo: MyString
+  description: MyString
+  menu: MyString

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customerID: 1
+  category: MyString
+  outletID: MyString
+  content: MyString
+  rating: 1
+
+two:
+  customerID: 1
+  category: MyString
+  outletID: MyString
+  content: MyString
+  rating: 1

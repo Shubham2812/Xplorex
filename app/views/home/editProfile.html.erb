@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Edit Profile </title>
+</head>
+<body>
+<br><br>
+<div style="display: flex; justify-content: space-around;">
+<div style="width: 45%">
+	<form action="/profile/edit/confirm" method="post" enctype="multipart/form-data">
+		<fieldset>
+			<legend style="color: blue; font-size: 20px;"> Personal Information </legend>
+			<p style="color: grey">
+			Name* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="name" placeholder="<%= @user.name %>"> <br>
+			E-Mail* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="email" placeholder="<%= @user.email %>"> <br>
+			Password* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="password" name="password" placeholder="<%= @user.password %>"> <br>
+			<% if @user.gender == "Male" %>
+				Gender &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Male" checked> <span style="color: black"> Male 
+				&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Female"> Female
+				&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Transgender"> Transgender <br> </span>
+			<% elsif @user.gender == "Female" %>
+				Gender &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Male"> <span style="color: black"> Male 
+				&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Female" checked> Female
+				&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Transgender"> Transgender <br> </span>
+			<% else %>
+				Gender &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Male"> <span style="color: black"> Male 
+				&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Female"> Female
+				&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Transgender" checked> Transgender <br> </span>
+			<% end %>
+			</p>
+		</fieldset>
+		<br>
+		<fieldset>
+			<legend style="color: blue; font-size: 20px;"> Contact Details </legend>
+			<p style="color: grey">
+			Phone* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="phone" maxlength="10" max="9999999999" min="0000000000" placeholder="<%= @user.phone %>"> <br>
+			Address &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="address" placeholder="<%= @user.address %>"> <br>
+			City &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="city" placeholder="<%= @user.city %>"> <br>
+			Photo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="file" name="photo">
+			</p>
+		</fieldset>
+		<input type="submit" name="submit" value="Edit" style="margin-right: 20px; display: inline-block;">
+		<input type="reset" style="display: inline-block;">
+	</form>
+	<form action="/edit/cancel" method="get" style="display: inline-block;">
+		<input type="submit" name="submit" value="Cancel">
+	</form>
+</div>
+</div>
+</body>
+</html>

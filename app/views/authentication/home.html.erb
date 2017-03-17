@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Home </title>
+</head>
+<body>
+	<% if @owner %>
+	<%= @owner.name %>
+	<% end %>
+	<% if @customer %>
+	<%= @customer.name %>
+	<% end %>
+	<form action="/logout" method="get">
+		<input type="submit" name="submit" value="Logout">
+	</form>
+</body>
+</html>

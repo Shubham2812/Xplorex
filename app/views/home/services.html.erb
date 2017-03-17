@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Services </title>
+	<style type="text/css">
+		.service{
+			text-decoration: none;
+			color: green;
+			font-size: 25px;
+		}
+
+		.service:hover{
+			color: darkgreen;
+		}
+
+	</style>
+</head>
+<body>
+
+	<ol>
+	<% @services.each do |service| %>
+		<li style="color: green"> <a class="service" href="/redirect/food/<%= service.id %>"> <%= service.name %> </a> </li>
+	<% end %>
+	</ol>
+
+</body>
+</html>

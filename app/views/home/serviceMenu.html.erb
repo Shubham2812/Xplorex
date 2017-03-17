@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Service Menu </title>
+	<style type="text/css">
+		.main{
+			width: 60%;			
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			padding: 40px;
+		}
+
+		.item{
+			width: 220px;
+    		height: 100px;
+    		margin:10px 0 0 -10px;
+    		margin-bottom: 40px;  
+    		background: cyan;
+   			-moz-border-radius: 100px / 50px;
+  		 	-webkit-border-radius: 100px / 50px;
+    		border-radius: 100px / 50px;
+    		display: flex;
+			justify-content: space-around;
+			align-items: center;
+			border-top: 1px solid blue;
+		}
+
+		a:link{
+			text-decoration: none;
+		}
+
+		a:visited{
+			text-decoration: none;
+		}
+
+		a:hover{
+			transform: scale(1.2);
+		}
+
+		span{
+			font-size: 25px;
+		}
+
+	</style>
+</head>
+<body>
+<div style="display: flex; justify-content: space-around;">
+	<div class="main">
+
+	<a href="/addFood">
+	<div class="item">
+	<span>Food</span>
+	</div>
+	</a>
+
+	<a href="/addTravel">
+	<div class="item">
+	<span>Travel</span>
+	</div>
+	</a>
+
+	<a href="/addEntertainment">
+	<div class="item">
+	<span>Entertainment</span>
+	</div>
+	</a>
+
+	<a href="/addHealth">
+	<div class="item">
+	<span>Health</span>
+	</div>
+	</a>
+
+	<a href="/addEducation">
+	<div class="item">
+	<span>Education</span>
+	</div>
+	</a>
+
+	<a href="/addOther">
+	<div class="item">
+	<span>Other</span>
+	</div>
+	</a>
+
+	</div>
+
+</div>
+</div>
+</body>
+</html>
+
+
+
+		<!-- .item{
+			height: 100px;
+			width: 200px;
+			background-color: pink;
+			margin: 20px;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+		} -->

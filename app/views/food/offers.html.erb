@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Offer </title>
+</head>
+<body>
+		<br><br>
+	<div style="display: flex; justify-content: space-around;">
+	<div style="border: 1px solid black; width: 50%; padding: 20px;">
+	Add Offer to <span style="font-size: 30px; color: green"> <%= @outlet.name %> </span> <br><br>
+		<form action="/food/addOffer" method="get">
+			<p style="color: grey">
+			Offer &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <textarea rows="2" cols="40" name="offer"></textarea> <br>
+			<input type="hidden" name="outletID" value="<%= @outlet.id %>"> <br>
+			Valid From? &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="date" name="from" placeholder="YYYY-MM-DD"> <br>
+			Valid Upto? &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="date" name="to" placeholder="YYYY-MM-DD"> <br><br>
+			<input type="submit" name="submit" value="Add Offer">
+			<input type="reset">
+			</p>
+		</form>
+
+		<form action="/food/cancel" method="get">
+			<input type="submit" name="submit" value="cancel">
+		</form>
+	</div>
+	</div>
+</body>
+</html>

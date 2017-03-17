@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Edit Offer </title>
+</head>
+<body>
+		<form action="/food/editOfferFinal" method="get">
+			Offer <input type="text" name="offer" placeholder="<%= @offer.content %>"> <br>
+			<input type="hidden" name="offerID" value="<%= @offer.id %>"> <br>
+			<input type="date" name="from" placeholder="<%= @offer.from %>"> <br>
+			<input type="date" name="to" placeholder="<%= @offer.to %>"> <br>
+			<input type="submit" name="submit" value="Edit Offer">
+		</form>
+		<form action="/food/cancel">
+			<input type="submit" name="submit" value="cancel">
+		</form>
+</body>
+</html>
