@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170312203607) do
+ActiveRecord::Schema.define(version: 20170317221622) do
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer  "customerID"
+    t.string   "category"
+    t.integer  "outletID"
+    t.integer  "numPersons"
+    t.date     "date"
+    t.time     "time"
+    t.integer  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string   "name"

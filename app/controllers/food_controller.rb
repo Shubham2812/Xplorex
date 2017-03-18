@@ -2,6 +2,7 @@ class FoodController < ApplicationController
 
 	def food
 		@offers = Offer.where(:category => "food")
+		@booking = Booking.find_by(:outletID => params[:outletID], :customerID => session[:user_id])
 		if params[:outletID]
 			@food = Food.find(params[:outletID])
 		end
@@ -188,5 +189,46 @@ class FoodController < ApplicationController
  		outletID = review.outletID
  		review.save
  		return redirect_to controller: 'food', action: 'food', outletID: outletID
+ 	end
+
+ 	def booking
+ 		@outlet = Food.find(params[:outletID])
+ 	end
+
+ 	def addBooking
+ 		booking = Booking.find_by(:outletID => params[:outletID], :customerID => session[:user_id])
+ 		if booking
+ 			booking.destroy
+ 		end
+ 		Booking.create(
+ 				:customerID => session[:user_id],
+ 				:category => "food",
+ 				:outletID => params[:outletID],
+ 				:numPersons => params[:numPersons],
+ 				:date => params[:date],
+ 				:time => params[:time],
+ 				:status => 0
+ 			)
+ 		return redirect_to controller: 'food', action: 'food', outletID: params[:outletID]
+ 	end
+
+ 	def confirmBooking
+ 		booking = Booking.find(params[:bookingID])
+ 		booking.status = 1;
+ 		booking.save
+ 		return redirect_to '/notifications'
+ 	end
+
+ 	def rejectBooking
+ 		booking = Booking.find(params[:bookingID])
+ 		booking.status = 2;
+ 		booking.save
+ 		return redirect_to '/notifications'
+ 	end
+
+ 	def cancelBooking
+ 		booking = Booking.find(params[:bookingID])
+ 		booking.destroy
+ 		return redirect_to '/myBookings'
  	end
 end

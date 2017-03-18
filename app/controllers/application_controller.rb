@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  helper_method :currentUser, :sessionID, :sessionIdentity, :getCustomer, :getOwner, :getFood, :getOffers, :getReviews, :getMyReview, :likes, :dislikes, :photo, :avatar
+  helper_method :currentUser, :sessionID, :sessionIdentity, :getCustomer, :getOwner, 
+  :getFood, :getOffers, :getReviews, :getMyReview, :likes, :dislikes, :photo, :avatar, :bookings
 
   def currentUser
   	if not session[:user_id]
@@ -86,6 +87,10 @@ class ApplicationController < ActionController::Base
       file = "/uploads/users/" + user.id.to_s + "_" + sessionIdentity + "_" + user.photo
     return file
     end
+  end
+
+  def bookings outletID
+    return Booking.where(:outletID => outletID)
   end
 
 end

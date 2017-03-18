@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get '/profile/edit' => 'home#editProfile'
   post '/profile/edit/confirm' => 'home#editProfileFinal'
   get '/edit/cancel' => 'home#profile'
+  get '/myBookings' => 'home#myBookings'
+  get '/notifications' => 'home#notifications'
 
   get '/food' => 'food#food'
   get '/addFood' => 'food#addFood'
@@ -36,6 +38,13 @@ Rails.application.routes.draw do
   get '/food/review/delete' => 'food#deleteReview' 
   get '/food/review/edit' => 'food#editReview'
   get '/food/editReview/confirm' => 'food#confirmEditReview'
+  get '/food/booking/:outletID' => 'food#booking'
+  get '/food/addbooking/confirm/:outletID' => 'food#addBooking'
+  get '/food/booking/confirm/:bookingID' => 'food#confirmBooking'
+  get '/food/booking/reject/:bookingID' => 'food#rejectBooking'
+  get '/food/booking/cancel/:bookingID' => 'food#cancelBooking'
+
+
   get '/education' => 'education#education'
   get '/travel' => 'travel#travel'
   get '/entertainment' => 'entertainment#entertainment'

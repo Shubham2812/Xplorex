@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Notifications </title>
+	<style type="text/css">
+		table{
+			border: 1px solid black;
+			border-left: none;
+			border-bottom: none;
+		}
+
+		th{
+			width: 150px;
+			height: 50px;
+			background-color: #0D90B7;
+			font-size: 22px;
+			border-left: 1px solid black;
+			border-bottom: 1px solid black;
+			color: white;
+		}
+
+		td{
+			width: 150px;
+			height: 30px;
+			font-size: 18px;
+			border-left: 1px solid black;
+			border-bottom: 1px solid black;
+			color: magenta;
+			text-align: center;
+			padding: 10px;
+		}
+
+	</style>
+</head>
+<body>
+	<% items = [] %>
+	<% @myOutlets.each do |outlet| %>
+		<% bookings = bookings(outlet.id) %>
+		<% bookings.each do |booking| %>
+			<% items << booking %>
+		<% end %>  
+	<% end %>
+	<div style="display: flex; justify-content: space-around; margin-top: 50px;">	
+	<table>
+		<tr>
+			<th> S. No </th>
+			<th> Outlet </th>
+			<th> Customer </th>
+			<th> No. of Persons </th>
+			<th> Date </th>
+			<th> Time </th>
+			<th> Action </th>
+		</tr> 
+	<% i = 1 %>
+	<% items.each do |booking| %>
+		<tr>
+			<td> <%= i %></td>
+			<td> <%= getFood(booking.outletID).name %> </td>
+			<td> <%= getCustomer(booking.customerID).name %> </td>
+			<td> <%= booking.numPersons %> </td>
+			<td> <%= booking.date %> </td>
+			<td> <%= booking.time.hour.to_s + ":" + booking.time.min.to_s %> </td> 
+			<% if booking.status == 0 %> 
+				<td>
+					<div style="display: flex; justify-content: space-around; align-items: center;">
+						<a href="/food/booking/confirm/<%= booking.id %>"> <img src="https://photos-1.dropbox.com/t/2/AABbAUhgysFBv-J30Y9NvbklHh0iOoqnslO6hn52O6f18g/12/655824313/jpeg/32x32/1/_/1/2/tick.jpg/EObcv6sFGAogAigC/tX8pQSJNq3s7Q3HJN2jbBH90zfAVtYEfSdw7qVtiYj4?size=1280x960&size_mode=3" style="height: 30px; width: 30px;"> </a>
+						<a href="/food/booking/reject/<%= booking.id %>"> <img src="https://photos-3.dropbox.com/t/2/AADCoBSX3DIQBAPSAkxyKd0UxS8EY6n94QbexNVuNA1r5A/12/655824313/png/32x32/1/_/1/2/wrong.png/EObcv6sFGAsgAigC/21kDEhkdVJRGGx57zb1QtlFuby5BDJH0F6xa7RtYlfY?size=1280x960&size_mode=3" style="height: 30px; width: 30px;">	</a>
+					</div>
+				</td>
+			<% elsif booking.status == 1 %>
+				<td style="color: green"> Confirmed! </td>
+			<% else %>
+				<td style="color: red"> Rejected! </td>
+			<% end %>
+		</tr>
+		<% i += 1 %>
+	<% end %>
+	</table>
+	</div>
+</body>
+</html>

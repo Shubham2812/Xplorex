@@ -62,6 +62,14 @@ class HomeController < ApplicationController
 		user.save
 		return redirect_to '/profile'
 	end
+
+	def notifications
+		@myOutlets = Food.where(:ownerID => session[:user_id])
+	end
+
+	def myBookings
+		@bookings = Booking.where(:customerID => session[:user_id])
+	end
 	
 	def serviceMenu
 	end

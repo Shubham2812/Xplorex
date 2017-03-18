@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customerID: 1
+  category: MyString
+  outletID: 1
+  numPersons: 1
+  time: 2017-03-18 03:46:22
+
+two:
+  customerID: 1
+  category: MyString
+  outletID: 1
+  numPersons: 1
+  time: 2017-03-18 03:46:22
