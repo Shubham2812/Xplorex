@@ -53,7 +53,7 @@ Rails.application.routes.draw do
 
   get '/redirect/food/:outletID' => 'food#food' 
 
-
+  get '/food/review/toggle/ajax' => 'food#visitedAjax'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

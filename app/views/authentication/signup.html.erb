@@ -29,16 +29,17 @@
 <div style="width: 45%">
 	<form action="/addUser" method="post" enctype="multipart/form-data">
 		<div style="display: flex; justify-content: space-around;">
-		<span> <span style="color: grey"> Identity* </span> <input type="radio" name="identity" value="Customer"> Customer 
-				  <input type="radio" name="identity" value="Owner"> Owner
-				  <br><br>
+		<span id="identity_color"> <span style="color: grey"> Identity* </span> 
+				<input type="radio" id="radio_customer" name="identity" value="Customer"> Customer 
+				<input type="radio" id="radio_owner" name="identity" value="Owner"> Owner
+				<br><br>
 		</span>
 		</div> 
 		<fieldset>
 			<legend style="color: blue; font-size: 20px;"> Personal Information </legend>
 			<p style="color: grey">
 			Name* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="name" required> <br>
-			E-Mail* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="email" required> <br>
+			E-Mail* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="email" required> <br>
 			Password* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="password" name="password" required> <br>
 			Gender &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Male"> <span style="color: black"> Male 
 				&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Female"> Female
@@ -84,5 +85,19 @@
 <span style="color: grey"> Already on Xplorex? <a class="login" href="/login"> Login </a> </span>
 </div>
 
+<script type="text/javascript">
+	var owner = document.getElementById("radio_owner")
+	var customer = document.getElementById("radio_customer")
+	var element = document.getElementById("identity_color")
+	element.addEventListener("click", func)
+	function func()
+	{
+		if(owner.checked)
+			//document.body.style.backgroundColor = "red";
+		else if(customer.checked)
+			//document.body.style.backgroundColor = "blue";
+	}
+
+</script>
 </body>
 </html>

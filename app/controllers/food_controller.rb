@@ -134,6 +134,28 @@ class FoodController < ApplicationController
  		return redirect_to controller: 'food', action: 'food', outletID: params[:outletID]
  	end
 
+ 	def visitedAjax
+ 		review = Review.find_by(:outletID => params[:outletID], :customerID => session[:user_id])
+ 		status = nil
+ 		if review
+ 			review.destroy
+ 			status = true
+ 		else
+	 		review = Review.create(
+	 				:customerID => session[:user_id],
+	 				:category => params[:category],
+	 				:outletID => params[:outletID],
+	 				:visited => true
+	 			)
+	 		status = false
+	 	end
+	 	object = Hash.new
+	 	object["review"] = review
+	 	object["userID"] = session[:user_id]
+	 	object["status"] = status
+ 		render json: object
+ 	end
+
  	def notVisited
  		review = Review.find(params[:reviewID])
  		outletID = review.outletID

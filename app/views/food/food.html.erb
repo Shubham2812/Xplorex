@@ -81,6 +81,10 @@
 			border-radius: 20%;
 		}
 
+		#review, .visited{
+			display: none;
+		}
+
 
 	</style>
 
@@ -137,7 +141,7 @@
 			}	
 		</style>
 		
-		<div style="height: 400px; width: 100%; background-color: white;">
+		<div style="width: 100%; background-color: white;"">
 			<div style="height: 320px; width: 100%; background-color: #4dff4d">
 				<img src="<%= photo(@food.id) %>" alt="<%= photo(@food.id) %>" style="height: 320px; width: 100%;"> 
 			</div>
@@ -164,25 +168,41 @@
 					<% else %>
 						<% if sessionIdentity == "Customer" %>
 							<% myReview = getMyReview("food", @food.id) %>
-							<% if myReview == nil %>
-								<form action="/food/review/visited" method="get" style="display: inline-block;">
+							<form id="review" action="/food/review/add" method="get">
+										<input type="hidden" name="outletID" value="<%= @food.id %>">
+										<input type="submit" name="submit" value="Add Review" style="width: 90px">
+							</form>
+							<form class="visited" id="outletID_<%=@food.id %>" action="/food/review/visited" method="get">
 									<input type="hidden" name="category" value="food">
 									<input type="hidden" name="outletID" value="<%= @food.id %>">
-									<input type="submit" name="submit" value="Visited">
-								</form>
+									<% if myReview %>
+										<input type="submit" name="submit" value="Not Visited" style="width: 90px">
+									<% else %>
+										<input type="submit" name="submit" value="Visited" style="width: 90px">
+									<% end %>
+							</form>
+							<% if myReview == nil %>
+								<style type="text/css">
+									.visited{
+										display: inline-block;
+									}
+								</style>
 							<% else %>
-								<form action="/food/review/notVisited" method="get" style="display: inline-block;">
-									<input type="hidden" name="reviewID" value="<%= myReview.id %>">
-									<input type="submit" name="submit" value="Not Visited">
-								</form>
 								<% if myReview.content == nil %>
-									<form action="/food/review/add" method="get" style="display: inline-block;">
-										<input type="hidden" name="outletID" value="<%= @food.id %>">
-										<input type="submit" name="submit" value="Add Review">
-									</form>
+									<style type="text/css">
+										#review{
+											display: inline-block;
+										}
+									</style>
 								<% else %>
-									Reviewed!
+									<style type="text/css">
+										.visited{
+											display: inline-block;
+										}
+									</style>
+									<span id="review_text"> Reviewed! </span>
 								<% end %>
+								
 							<% end %>
 						<% end %>
 					<% end %>
@@ -200,7 +220,7 @@
 				</div>
 			</div> 
 		</div>
-		<br><br><br>
+		<br>
 		<% if sessionIdentity == "Customer" %>
 			<div>
 				<% if @booking %>
@@ -283,23 +303,23 @@
 			<div style="border-top: 1px solid brown;">
 			<% reviews.each do |review| %>
 				<% if review.content %>
-					<li style="list-style: none; border: 1px solid brown; padding: 10px; border-top: none;">
-					<div style="display: flex; justify-content: space-between;">
-					<span style="font-size: 30px; color: magenta; flex-grow: 2"> <%= review.content %> </span>
-					<% if review.customerID == sessionID %>
-						<form action="/food/review/edit" method="get">
-							<input type="hidden" name="reviewID" value="<%= review.id %>">
-							<input type="image" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT0fzOpTjm8Q3X-xpKMTWiDEG4am6wW-nkZRYBOstF81W1jnncSmQ" title="Edit" style="height: 30px; width: 30px; margin-right: 10px;">
-						</form>
-						<form action="/food/review/delete" method="get">
-							<input type="hidden" name="reviewID" value="<%= review.id %>">
-							<input type="image" src="https://photos-1.dropbox.com/t/2/AAAqx-n_LET7iAyoE6kYiIWcrRhxXi1fJ6JLq7RON0F5Zw/12/655824313/jpeg/32x32/1/_/1/2/DeleteBin.jpg/EObcv6sFGAYgAigC/eolmBY5dXKxVPlPBQE5KL2DYjPz8vUSVJ9EPEOmrXMw?size=1280x960&size_mode=3" title="Delete" style="height: 30px; width: 30px;">
-						</form>
-					<% end %>
-					</div>
-					<span style="font-size: 18px; color: orange"> by <%= getCustomer(review.customerID).name %> </span> <br>
-					<span style="font-size: 15px; color: green"> Rating: <%= review.rating %>/5 </span> <br>
-				</li>
+					<li class="reviews" id="review_<%= review.id %>" style="list-style: none; border: 1px solid brown; padding: 10px; border-top: none;">
+						<div style="display: flex; justify-content: space-between;">
+						<span style="font-size: 30px; color: magenta; flex-grow: 2"> <%= review.content %> </span>
+						<% if review.customerID == sessionID %>
+							<form action="/food/review/edit" method="get">
+								<input type="hidden" name="reviewID" value="<%= review.id %>">
+								<input type="image" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT0fzOpTjm8Q3X-xpKMTWiDEG4am6wW-nkZRYBOstF81W1jnncSmQ" title="Edit" style="height: 30px; width: 30px; margin-right: 10px;">
+							</form>
+							<form action="/food/review/delete" method="get">
+								<input type="hidden" name="reviewID" value="<%= review.id %>">
+								<input type="image" src="https://photos-1.dropbox.com/t/2/AAAqx-n_LET7iAyoE6kYiIWcrRhxXi1fJ6JLq7RON0F5Zw/12/655824313/jpeg/32x32/1/_/1/2/DeleteBin.jpg/EObcv6sFGAYgAigC/eolmBY5dXKxVPlPBQE5KL2DYjPz8vUSVJ9EPEOmrXMw?size=1280x960&size_mode=3" title="Delete" style="height: 30px; width: 30px;">
+							</form>
+						<% end %>
+						</div>
+						<span style="font-size: 18px; color: orange"> by <%= getCustomer(review.customerID).name %> </span> <br>
+						<span style="font-size: 15px; color: green"> Rating: <%= review.rating %>/5 </span> <br>
+					</li>
 				<% end %>
 			<% end %>
 			</div>
