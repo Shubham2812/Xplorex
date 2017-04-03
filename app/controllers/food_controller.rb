@@ -190,6 +190,12 @@ class FoodController < ApplicationController
  		return redirect_to controller: 'food', action: 'food', outletID: outletID
  	end
 
+ 	def deleteReviewAjax
+ 		review = Review.find(params[:reviewID])
+ 		review.destroy
+ 		render json: review
+ 	end
+
  	def editReview
  		@review = Review.find(params[:reviewID])
  		@outlet = Food.find(@review.outletID)

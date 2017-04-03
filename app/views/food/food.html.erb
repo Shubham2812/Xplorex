@@ -29,6 +29,7 @@
 		#offers_inner{
 			overflow-y: auto;
 			height: 800px;
+			border-bottom: 1px solid brown;
 		}
 
 		.button{
@@ -38,11 +39,14 @@
 			margin-top: 15px;
 			margin-bottom: 15px;
 			font-size: 120%;
+			border-radius: 10%;
+			background-color: white;			
 		}
 
 		.button:hover{
 			transform: scale(1.2);
 			cursor: pointer;
+			background-color: cyan;
 		}
 
 		.buttons{
@@ -60,7 +64,7 @@
 		}
 
 		.link:hover{
-			color: #7C0265;
+			color: blue;
 
 		}
 
@@ -83,6 +87,10 @@
 
 		#review, .visited{
 			display: none;
+		}
+
+		#toggleReview, #toggleOffer:hover{
+			cursor: pointer;
 		}
 
 
@@ -250,9 +258,12 @@
 			<span style="color: black"> <%= @food.description %> </span> <br>
 		</div> <br>
 		<div style="width: 97.3%; background-color: white; padding: 10px;">
-			<span style="font-size: 20px; color: blue"> Special Offers </span> <br>
+			<div id="toggleOffer" style="display: flex; justify-content: space-between;"> 
+				<span style="font-size: 20px; color: blue"> Special Offers </span> 
+				<img src="http://www.iconarchive.com/download/i87622/icons8/ios7/Arrows-Up-4.ico" style="height: 20px; width: 20px;"> 
+			</div>
 			<% offers = getOffers("food", @food.id) %>
-			<div style="border-top: 1px solid brown;">
+			<div id="upDownOffer" style="border-top: 1px solid brown;">
 			<% offers.each do |offer| %>	
 				<li style="border: 1px solid brown; list-style: none; padding: 10px; border-top: none;">
 					<div style="display: flex; justify-content: space-between;">
@@ -280,7 +291,10 @@
 		</div>
 		<br>
 		<div style="width: 97.3%; background-color: white; padding: 10px;"">
-			<span style="font-size: 20px; color: blue;"> Reviews </span> 
+		<div id="toggleReview" style="display: flex; justify-content: space-between;"> 
+				<span style="font-size: 20px; color: blue"> Reviews </span> 
+				<img src="http://www.iconarchive.com/download/i87622/icons8/ios7/Arrows-Up-4.ico" style="height: 20px; width: 20px;"> 
+			</div>
 			<% if not sessionID %>
 				<span style="text-align: right; margin-left: 470px; color: grey"> <a href="/login"> Login</a> to Add Review </span> <br>
 				<style type="text/css">
@@ -300,7 +314,7 @@
 				</style>
 			<% end %>
 			<% reviews = getReviews("food", @food.id) %>
-			<div style="border-top: 1px solid brown;">
+			<div id="upDownReview" style="border-top: 1px solid brown;">
 			<% reviews.each do |review| %>
 				<% if review.content %>
 					<li class="reviews" id="review_<%= review.id %>" style="list-style: none; border: 1px solid brown; padding: 10px; border-top: none;">
@@ -311,7 +325,7 @@
 								<input type="hidden" name="reviewID" value="<%= review.id %>">
 								<input type="image" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT0fzOpTjm8Q3X-xpKMTWiDEG4am6wW-nkZRYBOstF81W1jnncSmQ" title="Edit" style="height: 30px; width: 30px; margin-right: 10px;">
 							</form>
-							<form action="/food/review/delete" method="get">
+							<form action="/food/review/delete" method="get" id="deleteButton">
 								<input type="hidden" name="reviewID" value="<%= review.id %>">
 								<input type="image" src="https://photos-1.dropbox.com/t/2/AAAqx-n_LET7iAyoE6kYiIWcrRhxXi1fJ6JLq7RON0F5Zw/12/655824313/jpeg/32x32/1/_/1/2/DeleteBin.jpg/EObcv6sFGAYgAigC/eolmBY5dXKxVPlPBQE5KL2DYjPz8vUSVJ9EPEOmrXMw?size=1280x960&size_mode=3" title="Delete" style="height: 30px; width: 30px;">
 							</form>
