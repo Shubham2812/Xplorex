@@ -62,9 +62,9 @@
 			<td> <%= booking.time.hour.to_s + ":" + booking.time.min.to_s %> </td> 
 			<% if booking.status == 0 %> 
 				<td>
-					<div style="display: flex; justify-content: space-around; align-items: center;">
-						<a href="/food/booking/confirm/<%= booking.id %>"> <img src="https://www.dropbox.com/s/yjmzwipuw0lhurn/tick.jpg?dl=1" style="height: 30px; width: 30px;"> </a>
-						<a href="/food/booking/reject/<%= booking.id %>"> <img src="https://www.dropbox.com/s/npd4rhaotvu5hr5/wrong.png?dl=1" style="height: 30px; width: 30px;">	</a>
+					<div id="status" style="display: flex; justify-content: space-around; align-items: center;">
+						<a href="/food/booking/confirm/<%= booking.id %>"> <img class="accept" id="accept_<%= booking.id %>" src="https://www.dropbox.com/s/yjmzwipuw0lhurn/tick.jpg?dl=1" style="height: 30px; width: 30px;"> </a>
+						<a href="/food/booking/reject/<%= booking.id %>"> <img class="reject" id="reject_<%= booking.id %>" src="https://www.dropbox.com/s/npd4rhaotvu5hr5/wrong.png?dl=1" style="height: 30px; width: 30px;">	</a>
 					</div>
 				</td>
 			<% elsif booking.status == 1 %>

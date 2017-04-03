@@ -248,6 +248,14 @@ class FoodController < ApplicationController
  		return redirect_to '/notifications'
  	end
 
+ 	def bookingAjax
+ 		byebug
+ 		booking = Booking.find(params[:bookingID])
+ 		booking.status = params[:status];
+ 		booking.save
+ 		render json: booking
+ 	end
+
  	def cancelBooking
  		booking = Booking.find(params[:bookingID])
  		booking.destroy

@@ -16,8 +16,15 @@ class AuthenticationController < ApplicationController
 	end
 
 	def addUser
-		original_filename = params["photo"].original_filename
 		if params[:identity] == "Owner"
+			if(params['photo'])
+				original_filename = params["photo"].original_filename
+					file_name = ownwer.id.to_s + "_" + "Owner_" + original_filename
+			    	temp_file = params["photo"]
+			    	File.open(Rails.root.join('public', 'uploads', 'users', file_name), 'wb') do |file|
+			    	file.write(temp_file.read)
+			    	end
+			end
 			owner = Owner.find_by_email(params[:email])
 			if not owner
 				Owner.create(
@@ -28,20 +35,23 @@ class AuthenticationController < ApplicationController
 					:phone => params[:phone],
 					:address => params[:address],
 					:city => params[:city],
-					:photo => params["photo"].original_filename
+					:photo => original_filename
 				)
 				flash[:signupSuccess] = "Signup Successful"
-				file_name = ownwer.id.to_s + "_" + "Owner_" + original_filename
-		    	temp_file = params["photo"]
-		    	File.open(Rails.root.join('public', 'uploads', 'users', file_name), 'wb') do |file|
-		    	file.write(temp_file.read)
-		    	end
 				return redirect_to '/login'
 			else
 				flash[:Owner] = "Owner Already Exists"
 				return redirect_to '/signup'
 			end
 		elsif params[:identity] == "Customer"
+			if(params['photo'])
+				original_filename = params["photo"].original_filename
+					file_name = customer.id.to_s + "_" + "Customer_" + original_filename
+			    	temp_file = params["photo"]
+			    	File.open(Rails.root.join('public', 'uploads', 'users', file_name), 'wb') do |file|
+			    	file.write(temp_file.read)
+			    	end
+			end
 			customer = Customer.find_by_email(params[:email])
 			if not customer
 				customer = Customer.create(
@@ -52,14 +62,9 @@ class AuthenticationController < ApplicationController
 					:phone => params[:phone],
 					:address => params[:address],
 					:city => params[:city],
-					:photo => params[:photo].original_filename
+					:photo => original_filename
 				)
 				flash[:signupSuccess] = "Signup Successful"
-				file_name = customer.id.to_s + "_" + "customer_" + original_filename
-		    	temp_file = params["photo"]
-		    	File.open(Rails.root.join('public', 'uploads', 'users', file_name), 'wb') do |file|
-		    	file.write(temp_file.read)
-		    	end
 				return redirect_to '/login'
 			else
 				flash[:Customer] = "Customer Already Exists"
