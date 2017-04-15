@@ -67,12 +67,12 @@
 			<% elsif booking.status == 1 %>
 				<td style="color: green"> Confirmed! </td>
 				<td>
-				<a href="/food/booking/cancel/<%= booking.id %>"> <img src="http://www.clker.com/cliparts/V/O/l/G/L/k/cancel-button-hi.png" style="height: 30px; width: 50px;"> </a>
+				<a href="/food/booking/cancel/<%= booking.id %>"> <img class="cancel" id="cancel_<%= booking.id %>" src="http://www.clker.com/cliparts/V/O/l/G/L/k/cancel-button-hi.png" style="height: 30px; width: 50px;"> </a>
 				</td>
 			<% else %>
 				<td style="color: red"> Rejected! </td>
 				<td>
-				<a href="/food/booking/cancel/<%= booking.id %>"> <img src="https://photos-2.dropbox.com/t/2/AAD0gWtwE7o312Obhn9qF08hmF31mZj-eZIckWzs5aq6gQ/12/655824313/jpeg/32x32/1/_/1/2/DeleteBin.jpg/EObcv6sFGAcgAigC/eolmBY5dXKxVPlPBQE5KL2DYjPz8vUSVJ9EPEOmrXMw?size=1280x960&size_mode=3" style="height: 30px; width: 30px;"> </a>
+				<a href="/food/booking/cancel/<%= booking.id %>"> <img class="delete" id="delete_<%= booking.id %>" src="https://photos-2.dropbox.com/t/2/AAD0gWtwE7o312Obhn9qF08hmF31mZj-eZIckWzs5aq6gQ/12/655824313/jpeg/32x32/1/_/1/2/DeleteBin.jpg/EObcv6sFGAcgAigC/eolmBY5dXKxVPlPBQE5KL2DYjPz8vUSVJ9EPEOmrXMw?size=1280x960&size_mode=3" style="height: 30px; width: 30px;"> </a>
 				</td>
 			<% end %>
 	</tr>
