@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require autocomplete-rails
 //= require turbolinks
 //= require_tree .
 
@@ -24,24 +26,42 @@ function main()
 
 	var accept_image = document.getElementsByClassName("accept")[0];
 	var reject_image = document.getElementsByClassName("reject")[0];
+	var cancel_image = document.getElementsByClassName("cancel")[0];
+	var delete_image = document.getElementsByClassName("delete")[0];
+
+	var search_form = document.getElementById('search');
+
 	console.log(accept_image);
 	console.log(reject_image);
+	console.log("hello");
 
+	if(accept_image)
 	accept_image.addEventListener('click', booking.bind('accepted'));
+	if(reject_image)
 	reject_image.addEventListener('click', booking.bind('rejected'));
+	if(cancel_image)
+	cancel_image.addEventListener('click', booking.bind('cancelled'));
+	if(delete_image)
+	delete_image.addEventListener('click', booking.bind('deleted'));
 
 	function booking(event)
-	{	console.log(event.target);
+	{	event.preventDefault();
+		console.log(event.target.id.slice(0, 6));
 		var status;
-		if(event.target.class == 'accept')
+		if(event.target.id.slice(0, 6) == 'accept')
 			status = 'accepted'
-		else if(event.target.class == 'rejected')
+		else if(event.target.id.slice(0, 6) == 'reject')
 			status = 'rejected'
+		else if(event.target.id.slice(0, 6) == 'cancel')
+			status = 'cancelled'
+		else if(event.target.id.slice(0, 6) == 'cancel')
+			status = 'deleted'
+		
 		console.log("STATUS");
-			console.log(status);
+		console.log(status);
+		
 		var url = '/food/booking/status/ajax';
 		var info = {
-
 			status: status,
 			bookingID: event.target.id.slice(7)
 		}
@@ -53,10 +73,18 @@ function main()
 			success: function(booking){
 					var column = document.getElementById("status");
 					if(status == 'accepted')
-						column.innerHTML = "Confirmed!"
+					{	column.innerHTML = "Confirmed!"
+						column.style.color = 'green';
+					}
 					else if(status == 'rejected')
-						column.innerHTML = "Rejected!"
-
+					{	column.innerHTML = "Rejected!"
+						column.style.color = 'red';
+					}
+					else if(status == 'cancelled' || status == 'deleted')
+					{ 	var child = cancel_image.parentNode.parentNode.parentNode;
+						var parent = cancel_image.parentNode.parentNode.parentNode.parentNode
+						parent.removeChild(child);
+					}
 			},
 			error: function(){
 				alert("Error");
@@ -123,6 +151,71 @@ function main()
 			});
 		}
 	} 
+
+	search_form[2].addEventListener('keydown', function(){
+		var search_results = document.getElementById('search_results')
+		if(search_form[2].value.length > 1)
+		{
+			var url = '/search'
+			var info = {
+				search: search_form[2].value
+			}
+
+			search_results.style.display = 'block'
+
+			$.ajax({
+				url: url,
+				method: 'post',
+				data: info,
+				success: function(items){
+					console.log(items);
+					while (search_results.firstChild) 
+					{
+ 					   search_results.removeChild(search_results.firstChild);
+					}
+
+					for(var i=0; i<items.length; i++)
+					{ var child = document.createElement('div')
+					  var text = document.createTextNode(items[i].name)
+					  child.appendChild(text);
+					  search_results.appendChild(child)
+					  child.addEventListener('click', function(){
+					  	search_form[2].value = this.innerHTML
+					  })
+					}
+				},
+				error: function(){
+					alert("Error")
+				}
+			})
+		}
+		else
+		{
+			search_results.style.display = 'none'
+		}
+	})
+
+	var search_results = document.getElementById('search_results')
+	if(search_results)
+	{ 
+		search_results.addEventListener('click', function(){
+			this.style.display = 'none'
+		})
+
+		document.body.addEventListener('click', function(event){
+			console.log(event)
+			var search_results = document.getElementById('search_results')  
+			var x = $("#search_results").position();
+			console.log(x)
+			console.log(search_results.clientWidth);
+			console.log(search_results.clientHeight);
+
+			if((event.clientX < x.left || event.clientX > x.left + search_results.clientWidth) || (event.clientY < x.top || event.clientY > x.top + search_results.clientHeight))
+			search_results.style.display = 'none'
+			
+		})
+	}
+
 }
 
 window.addEventListener("load", function(){

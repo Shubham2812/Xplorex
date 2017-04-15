@@ -85,4 +85,14 @@ class HomeController < ApplicationController
 	def services
 		@services = Food.where(:ownerID => session[:user_id])
 	end
+
+	def search
+		items = Food.where("name like '%#{params[:search]}%' ")
+		render json: items
+	end
+
+	def search_result
+		outlet = Food.find_by(name: params[:search]) 
+		return redirect_to controller: 'food', action: 'food', outletID: outlet.id
+	end
 end

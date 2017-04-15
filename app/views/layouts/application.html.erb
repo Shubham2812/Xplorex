@@ -137,6 +137,18 @@
 	<% end %>
 	</div>
 </div>
+<div class="search_container">
+	<div class="search">
+		<img src="/images/search.png">
+		<%= form_tag '/search/show', id: 'search' do %>
+			<%= text_field_tag :search, nil, :autocomplete => 'off' %>
+			<%= submit_tag :Search, id: 'search_button' %>
+		<% end %>
+	</div>
+</div>
+<div id="search_results">
+		
+</div>
 
 <%= yield %>
 

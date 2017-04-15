@@ -1,4 +1,5 @@
 class FoodController < ApplicationController
+	autocomplete :food, :name
 
 	def food
 		@offers = Offer.where(:category => "food")
@@ -249,9 +250,14 @@ class FoodController < ApplicationController
  	end
 
  	def bookingAjax
- 		byebug
  		booking = Booking.find(params[:bookingID])
- 		booking.status = params[:status];
+ 		if(params[:status] == 'accepted')
+ 			booking.status = 1
+ 		elsif(params[:status] == 'rejected')
+ 			booking.status = 2
+ 		elsif(params[:status] == 'cancelled' or params[:status] == 'deleted')
+ 			booking.destroy
+ 		end
  		booking.save
  		render json: booking
  	end
@@ -260,5 +266,9 @@ class FoodController < ApplicationController
  		booking = Booking.find(params[:bookingID])
  		booking.destroy
  		return redirect_to '/myBookings'
+ 	end
+
+ 	def autocomplete_food_name
+ 		byebug
  	end
 end

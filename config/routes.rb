@@ -55,6 +55,10 @@ Rails.application.routes.draw do
 
   get '/food/review/toggle/ajax' => 'food#visitedAjax'
   get '/food/booking/status/ajax' => 'food#bookingAjax'
+
+  post '/search' => 'home#search'
+  post '/search/show' => 'home#search_result'
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

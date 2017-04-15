@@ -2,6 +2,51 @@ body{
 	padding: 0px;
 }
 
+#search_results{
+ 	display: none;
+ 	border: 1px solid grey;
+ 	border-top: 0;
+ 	border-bottom: 0;
+ 	width: 248px;
+ }
+
+#search_results > div{
+ 	border-bottom: 1px solid grey;
+ 	border-top: 0;
+ 	width: 248px;
+}
+
+#search_results > div:hover{
+ 	cursor: pointer;
+ 	background-color: cyan;
+}
+
+.search{
+	width: 248px;
+	border: 1px solid #bfbfbf;
+	display: flex;
+	justify-content:  space-between;
+	align-items: center;
+	padding-left: 5px;
+}
+
+#search > input{
+	border: 0px;
+}
+
+#search_button:hover{
+	cursor: pointer;
+}
+
+.search > img{
+	height: 15px;
+	width: 15px;
+}
+
+.search_container{
+	margin-bottom: 5px;
+}
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
