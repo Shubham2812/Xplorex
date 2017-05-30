@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
+  ActiveAdmin.routes(self)
   get '/signup' => 'authentication#signup'
   post '/addUser' => 'authentication#addUser'
   get '/login' => 'authentication#login'
-  get '/loginStatus' => 'authentication#loginStatus'
+  post '/login/confirm' => 'authentication#loginStatus'
 
   get '/logout' => 'authentication#logout'
   post '/addFood/confirm' => 'food#addFoodFinal'
@@ -54,15 +55,19 @@ Rails.application.routes.draw do
   get '/redirect/food/:outletID' => 'food#food' 
 
   get '/food/review/toggle/ajax' => 'food#visitedAjax'
-<<<<<<< HEAD
   get '/food/review/delete/ajax' => 'food#deleteReviewAjax'
-=======
   get '/food/booking/status/ajax' => 'food#bookingAjax'
 
   post '/search' => 'home#search'
   post '/search/show' => 'home#search_result'
 
->>>>>>> shubham
+  get '/loginStatus' => 'api#loginStatus'
+
+  namespace :api do
+    namespace :v1 do
+      post '/login/confirm' => 'xyz#login'
+    end
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

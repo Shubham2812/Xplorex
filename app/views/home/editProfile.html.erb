@@ -2,17 +2,22 @@
 <html>
 <head>
 	<title> Edit Profile </title>
+	<style>
+		fieldset > p > input{
+			margin-bottom: 10px;
+		}
+	</style>
 </head>
 <body>
 <br><br>
 <div style="display: flex; justify-content: space-around;">
-<div style="width: 45%">
+<div class="edit_profile_form">
 	<form action="/profile/edit/confirm" method="post" enctype="multipart/form-data">
 		<fieldset>
 			<legend style="color: blue; font-size: 20px;"> Personal Information </legend>
 			<p style="color: grey">
 			Name* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="name" placeholder="<%= @user.name %>"> <br>
-			E-Mail* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="email" placeholder="<%= @user.email %>"> <br>
+			E-Mail* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="email" placeholder="<%= @user.email %>"> <br>
 			Password* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="password" name="password" placeholder="<%= @user.password %>"> <br>
 			<% if @user.gender == "Male" %>
 				Gender &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Male" checked> <span style="color: black"> Male 
@@ -39,12 +44,15 @@
 			Photo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="file" name="photo">
 			</p>
 		</fieldset>
-		<input type="submit" name="submit" value="Edit" style="margin-right: 20px; display: inline-block;">
-		<input type="reset" style="display: inline-block;">
+		<div class="edit_reset"> 
+			<input type="submit" name="submit" value="Edit" style="margin-right: 20px; display: inline-block;">
+			<input type="reset" style="display: inline-block;">
+		
 	</form>
-	<form action="/edit/cancel" method="get" style="display: inline-block;">
-		<input type="submit" name="submit" value="Cancel">
-	</form>
+		<form action="/edit/cancel" method="get" style="display: inline-block;">
+			<input type="submit" name="submit" value="Cancel" id="cancel_button">
+		</form>
+	</div>
 </div>
 </div>
 </body>

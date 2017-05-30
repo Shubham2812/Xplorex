@@ -31,27 +31,27 @@
  </div>
  	<br><br><br>
 	<div style="display: flex; justify-content: space-around;">
-	<div style="width: 35%; border: 1px solid grey; padding: 20px;">
-	<form action="/loginStatus" method="get">
-		<div style="display: flex; justify-content: space-around;">
-			<span> <span style="color: grey"> Identity* </span> 
-				<input id="cust" type="radio" name="identity" value="Customer"> Customer 
-				<input id="own" type="radio" name="identity" value="Owner"> Owner
-				<br><br>
-			</span>
-		</div> 
-			<p style="color: grey">
-			E-Mail* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="email" required> <br>
-			Password* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="password" name="password" required> <br><br>
-			</p>
-		<div style="display: flex; justify-content: space-around;">
-			<div>
-			<input type="submit" name="submit" value="Login" style="margin-right: 20px;"> 
-			<input type="reset">
-			</div>
+		<div class="login_form">
+			<form action="/login/confirm" method="post">
+				<div style="display: flex; justify-content: space-around;">
+					<span> <span style="color: grey"> Identity* </span> 
+						<input id="cust" type="radio" name="identity" value="Customer"> Customer 
+						<input id="own" type="radio" name="identity" value="Owner"> Owner
+						<br><br>
+					</span>
+				</div> 
+					<p style="color: grey">
+					E-Mail* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="email" required> <br>
+					Password* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="password" name="password" required> <br><br>
+					</p>
+				<div style="display: flex; justify-content: space-around;">
+					<div>
+					<input type="submit" name="submit" value="Login" style="margin-right: 20px;"> 
+					<input type="reset">
+					</div>
+				</div>
+			</form>
 		</div>
-	</form> <br>
-	</div>
 	</div>
 	<br>
 <div style="display: flex; justify-content: space-around;">

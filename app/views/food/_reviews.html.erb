@@ -1,0 +1,17 @@
+<li class="reviews" id="review_<%= review.id %>" style="list-style: none; border: 1px solid brown; padding: 10px; border-top: none;">
+						<div style="display: flex; justify-content: space-between;">
+						<span style="font-size: 30px; color: magenta; flex-grow: 2"> <%= review.content %> </span>
+						<% if review.customerID == sessionID %>
+							<form action="/food/review/edit" method="get">
+								<input type="hidden" name="reviewID" value="<%= review.id %>">
+								<input type="image" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT0fzOpTjm8Q3X-xpKMTWiDEG4am6wW-nkZRYBOstF81W1jnncSmQ" title="Edit" style="height: 30px; width: 30px; margin-right: 10px;">
+							</form>
+							<form action="/food/review/delete" method="get" id="deleteButton">
+								<input type="hidden" name="reviewID" value="<%= review.id %>">
+								<input type="image" src="https://photos-1.dropbox.com/t/2/AAAqx-n_LET7iAyoE6kYiIWcrRhxXi1fJ6JLq7RON0F5Zw/12/655824313/jpeg/32x32/1/_/1/2/DeleteBin.jpg/EObcv6sFGAYgAigC/eolmBY5dXKxVPlPBQE5KL2DYjPz8vUSVJ9EPEOmrXMw?size=1280x960&size_mode=3" title="Delete" style="height: 30px; width: 30px;">
+							</form>
+						<% end %>
+						</div>
+						<span style="font-size: 18px; color: orange"> by <%= getCustomer(review.customerID).name %> </span> <br>
+						<span style="font-size: 15px; color: green"> Rating: <%= review.rating %>/5 </span> <br>
+					</li>

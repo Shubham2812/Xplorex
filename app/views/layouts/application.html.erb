@@ -5,87 +5,29 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <style type="text/css">
-  	.header{
-		width: 98%;
-		border: 1px solid red;
-		padding: 10px;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 5px;
-	}
-
-	.options{
-			height: 30px;
-			width: 100px;
-		}
-	
-	.options:hover{
-		transform: scale(1.2);
-		cursor: pointer;
-	}
-
-
-				.dropbtn {
-				    cursor: pointer;
-				}
-
-				.dropbtn:hover, .dropbtn:focus {
-				    background-color: #3e8e41;
-				}
-
-				.dropdown {
-				    position: relative;
-				    display: inline-block;
-				}
-
-				.dropdown-content {
-				    display: none;
-				    position: absolute;
-				    background-color: #f9f9f9;
-				    min-width: 120px;
-				    overflow: auto;
-				    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-				    z-index: 1;
-				}
-
-				.dropdown-content a {
-				    color: black;
-				    padding: 12px 16px;
-				    text-decoration: none;
-				    display: block;
-				    border: 1px solid grey;
-				    border-top: none;
-				    font-size: 14px;
-				}
-
-				.dropdown a:hover {background-color: orange}
-
-				.show {display:block;}
-
-	</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0">
 
 </head>
 <body>
 <div class="header">
 	<div style="display: flex; align-items: center;">
-	<img src="https://www.dropbox.com/s/v9h1ssv5sp9cb6b/X.jpg?dl=1" style="height: 100px; width: 100px;"> <span style="font-size: 50px; color: red">plorex</span>
+		<img src="/images/x.jpg" style="height: 100px; width: 100px;"> <span style="font-size: 50px; color: red">plorex</span>
 	</div>
-	<div>
-		<a href="/"> <img src="https://www.dropbox.com/s/0vs8haaaadoe1yi/Home.jpg?dl=1" style="height: 50px; width: 50px;"></a>
-	</div>
+	
+	<div> <a href="/"> <img src="/images/home.jpg" style="height: 50px; width: 50px;"></a> </div>
+
 	<div class="header_content" style="display: flex; justify-content: space-around; align-items: center;">
-	<% if currentUser %> 
+		<% if currentUser %> 
 			<span style="color: red; margin-right: 5px;"> <%= currentUser.name %> </span>
 			<div class="dropdown">
 				<% if avatar %>
-					<img onclick="myFunction()" class="dropbtn" src="<%= avatar %>" alt="No Image" style="height: 100px; width: 100px; border-radius: 50%;">
+					<img class="dropbtn" src="<%= avatar %>" alt="No Image" style="height: 100px; width: 100px; border-radius: 50%;">
 				<% else %>
 					<% if currentUser.gender == "Male" %>
-						<img onclick="myFunction()" class="dropbtn" src="/assets/avatar_male.png" alt="Hello" style="height: 100px; width: 100px; border-radius: 50%;">
+						<img class="dropbtn" src="/assets/avatar_male.png" alt="Hello" style="height: 100px; width: 100px; border-radius: 50%;">
 					<% else %>
-						<img onclick="myFunction()" class="dropbtn" src="/assets/avatar_female.png" alt="Hello" style="height: 100px; width: 100px; border-radius: 50%;">
+						<img class="dropbtn" src="/assets/avatar_female.png" alt="Hello" style="height: 100px; width: 100px; border-radius: 50%;">
 					<% end %>
 				<% end %>
 					<div id="myDropdown" class="dropdown-content">
@@ -103,38 +45,18 @@
 					    <% end %>
 					    
 					    <a href="/logout"> Logout </a>
-					</div>
-						
-					<script>
-						function myFunction() {
-						    document.getElementById("myDropdown").classList.toggle("show");
-						}
-
-						window.onclick = function(event) {
-						  if (!event.target.matches('.dropbtn')) {
-
-						    var dropdowns = document.getElementsByClassName("dropdown-content");
-						    var i;
-						    for (i = 0; i < dropdowns.length; i++) {
-						      var openDropdown = dropdowns[i];
-						      if (openDropdown.classList.contains('show')) {
-						        openDropdown.classList.remove('show');
-						      }
-						    }
-						  }
-						}
-					</script>
+					</div>			
 			</div>
-	<% else %>
-			<div style="display: flex;">
-			<form action="/signup" method="get" style="display: inline-block;">
-				<input class="options" type="submit" name="submit" value="Signup">
-			</form>
-			<form action="/login" method="get" style="display: inline-block; margin-left: 20px;">
-				<input class="options" type="submit" name="submit" value="Login">
-			</form>
+		<% else %>
+			<div class="login_signup">
+				<form action="/signup" method="get">
+					<input class="options" type="submit" name="submit" value="Signup">
+				</form>
+				<form action="/login" method="get">
+					<input class="options" type="submit" name="submit" value="Login">
+				</form>
 			</div>
-	<% end %>
+		<% end %>
 	</div>
 </div>
 <div class="search_container">
@@ -145,12 +67,32 @@
 			<%= submit_tag :Search, id: 'search_button' %>
 		<% end %>
 	</div>
-</div>
-<div id="search_results">
+	<div id="search_results">
 		
+	</div>
 </div>
 
 <%= yield %>
 
+<div class="footer">
+	<div class="footer_upper">
+		<div class="footer_contact">
+		    <span style="font-size: 16px;"> CONTACT </span> 
+		    <div>   
+	        	<p><img src="/images/location.png" class="fa-fw w3-xlarge w3-margin-right"> Home : 3-E, Kamla Nagar, Delhi - 110007 </p>
+	        	<p><img src="/images/phone.png" class="fa-fw w3-xlarge w3-margin-right"> Phone : 9711301266 </p> 
+	        	<p><img src="/images/mail.png" class="fa-fw w3-xlarge w3-margin-right"> Email :  shubham.aggarwal.1996@gmail.com </p>
+	        </div>
+	    </div>  
+		<div class="footer_map">
+			<img src="/images/map_kamla_nagar.png" style="height: 200px; width: 400px;">
+		</div>
+	</div>
+	<hr>
+	<div class="footer_lower">
+		<span style="font-size: 12px;"> Copyright © by Xplorex. All Rights Reserved</span>
+	</div>
+</div>
 </body>
 </html>
+

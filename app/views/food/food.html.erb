@@ -2,99 +2,6 @@
 <html>
 <head>
 	<title> Food </title>
-	<style type="text/css">
-		.main{
-			display: flex;
-			justify-content: space-between;
-
-		}
-		.sidebar{
-			width: 15%;
-			background-color: #ffff33;
-			margin-top: 10px;
-			margin-right: 15px;
-			display: inline-block;
-			padding: 20px;
-		}
-
-		.offers{
-			width: 15%;
-			background-color: pink;
-			margin-top: 10px;
-			margin-left: 15px;
-			display: inline-block;
-			padding: 10px;
-		}
-
-		#offers_inner{
-			overflow-y: auto;
-			height: 800px;
-			border-bottom: 1px solid brown;
-		}
-
-		.button{
-			width: 130px;
-			height: 50px;
-			margin-left: 15px;
-			margin-top: 15px;
-			margin-bottom: 15px;
-			font-size: 120%;
-			border-radius: 10%;
-			background-color: white;			
-		}
-
-		.button:hover{
-			transform: scale(1.2);
-			cursor: pointer;
-			background-color: cyan;
-		}
-
-		.buttons{
-			height: 400px;
-			width: 80%;
-			margin-left: 5px;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-
-		.link{
-			text-decoration: none;
-			color: magenta;
-		}
-
-		.link:hover{
-			color: blue;
-
-		}
-
-		.booking{
-			text-decoration: none;
-			background-color: #E0F01A;
-			color: red;
-			border: 1px solid brown;
-			padding: 10px;
-			border-radius: 20%;
-		}
-
-		.booking1, .booking2{
-			border: 1px solid grey;
-			padding: 10px;
-			background-color: grey;
-			color: black;
-			border-radius: 20%;
-		}
-
-		#review, .visited{
-			display: none;
-		}
-
-		#toggleReview, #toggleOffer:hover{
-			cursor: pointer;
-		}
-
-
-	</style>
 
 	<% if @restaurants %>
 		<% outlets = @restaurants %>
@@ -124,241 +31,23 @@
 
 <div class="main">
 <div class="sidebar">
-	<div style="height: 100px; width: 100px;">
-		<span style="font-size: 30px; color: brown"> Categories </span>
-	</div>
-
+	<div style="font-size: 30px; color: brown; text-align: center;"> CATEGORIES </div>
+	<br>
 	<div class="buttons">
 		<form action="/food" method="get">
 			<input class="button" id="b1" type="submit" name="category" value="Restaurants">
 			<input class="button" id="b2" type="submit" name="category" value="Bars">
-			<input class="button" id="b2" type="submit" name="category" value="Cafes">
-			<input class="button" id="b2" type="submit" name="category" value="Grocery">
-			<input class="button" id="b2" type="submit" name="category" value="Dessert">
-			<input class="button" id="b2" type="submit" name="category" value="Others">
+			<input class="button" id="b3" type="submit" name="category" value="Cafes">
+			<input class="button" id="b4" type="submit" name="category" value="Grocery">
+			<input class="button" id="b5" type="submit" name="category" value="Dessert">
+			<input class="button" id="b6" type="submit" name="category" value="Others">
 		</form>
 	</div>
 </div>
 <div class="center">
 	<% if @food %>
-		<style type="text/css">
-			.center{
-				width: 65%;
-				background-color: #ffa912;
-				margin-top: 10px;
-				padding: 20px;
-			}	
-		</style>
-		
-		<div style="width: 100%; background-color: white;"">
-			<div style="height: 320px; width: 100%; background-color: #4dff4d">
-				<img src="<%= photo(@food.id) %>" alt="<%= photo(@food.id) %>" style="height: 320px; width: 100%;"> 
-			</div>
-			<div style="height: 80px; width: 97.3%; background-color: white; padding: 10px; padding-bottom: 20px;">
-				<div style="display: flex; justify-content: space-between;">
-				<span style="font-size: 50px; color: brown"> <%= @food.name %> </span> 
-				<div style="display: flex; display: inline-block;">
-
-				<% if sessionID %>
-					<% if sessionIdentity == "Owner" and @food.ownerID == sessionID %>
-						<form action="/editfood" method="get" style="display: inline-block;">
-							<input type="hidden" name="outletID" value="<%= @food.id %>">
-							<input type="image" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTydlreUdbOJZVh1xzHNgNQiPbozuy1q6VYjFEkvMs_2gONalGm" name="submit" title="Edit" style="height: 40px; width: 40px">
-						</form>
-						<form action="/food/delete" method="get" style="display: inline-block;">
-							<input type="hidden" name="outletID" value="<%= @food.id %>">
-							<input type="image" src="https://photos-3.dropbox.com/t/2/AABGbxTHNUgxRch4gD07e8xuknuYV81t3rH5wWeQ9XkOaQ/12/655824313/jpeg/32x32/1/_/1/2/Delete.jpeg/EObcv6sFGAMgAigC/5Fffmow7Q906Yud5JIEY4VXmT3g-4JehhG6JJnEHLfo?size=1280x960&size_mode=3" name="submit" title="Remove" style="height: 40px; width: 40px">
-						</form>
-						<form action="/food/offers" method="get" style="display: inline-block;">
-							<input type="hidden" name="outletID" value="<%= @food.id %>">
-							<input type="image" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR2ZOp_3W4af-RQ6U_1TXbZ42DAgoIQWJJHq1u75DJHyZ-2kMKJUA" name="submit" title="Add Offer" style="height: 40px; width: 40px">
-						</form>
-
-					<% else %>
-						<% if sessionIdentity == "Customer" %>
-							<% myReview = getMyReview("food", @food.id) %>
-							<form id="review" action="/food/review/add" method="get">
-										<input type="hidden" name="outletID" value="<%= @food.id %>">
-										<input type="submit" name="submit" value="Add Review" style="width: 90px">
-							</form>
-							<form class="visited" id="outletID_<%=@food.id %>" action="/food/review/visited" method="get">
-									<input type="hidden" name="category" value="food">
-									<input type="hidden" name="outletID" value="<%= @food.id %>">
-									<% if myReview %>
-										<input type="submit" name="submit" value="Not Visited" style="width: 90px">
-									<% else %>
-										<input type="submit" name="submit" value="Visited" style="width: 90px">
-									<% end %>
-							</form>
-							<% if myReview == nil %>
-								<style type="text/css">
-									.visited{
-										display: inline-block;
-									}
-								</style>
-							<% else %>
-								<% if myReview.content == nil %>
-									<style type="text/css">
-										#review{
-											display: inline-block;
-										}
-									</style>
-								<% else %>
-									<style type="text/css">
-										.visited{
-											display: inline-block;
-										}
-									</style>
-									<span id="review_text"> Reviewed! </span>
-								<% end %>
-								
-							<% end %>
-						<% end %>
-					<% end %>
-				<% end %>
-				</div>
-				</div>
-				<div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
-				<span style="font-size: 20px; color: brown"> <%= @food.location %> </span>
-				<div style="display: flex; align-items: center">
-					<img src="https://photos-4.dropbox.com/t/2/AACusXr0pBqiB44lkvwG5lFggCRWge-DEplg1UbkUfZEXw/12/655824313/png/32x32/1/_/1/2/Like.png/EObcv6sFGAQgAigC/l8pjmjwkCWbSWW2KS2RI0h7kGQX4OgchoxqeIkhAGMI?size=1280x960&size_mode=3" style="height: 30px; width: 30px;">
-					<span style="font-size: 25px;"> &nbsp;<%= likes(@food.id) %> </span>
-					<img src="https://photos-2.dropbox.com/t/2/AABykOviim7omIusWWiMbLfY-HmJVGU6CqPhgYzaWiPa8Q/12/655824313/jpeg/32x32/1/_/1/2/Dislike.jpg/EObcv6sFGAUgAigC/_WxltPfHY6ox6W8q2VSMqO6d88pehSnQ91uFCh4B-Eg?size=1280x960&size_mode=3" style="height: 30px; width: 30px; margin-left: 40px;">
-					<span style="font-size: 25px;"> &nbsp;<%= dislikes(@food.id) %> </span>
-				</div>
-				</div>
-			</div> 
-		</div>
-		<br>
-		<% if sessionIdentity == "Customer" %>
-			<div>
-				<% if @booking %>
-					<% if @booking.status == 0 %>
-						<div style="display: flex; justify-content: space-between; align-items: center;">
-						<span class="booking1"> Booked </span> 
-						<span> Waiting for Confirmation... </span>
-						</div>
-					<% elsif @booking.status == 1 %>
-						<div style="display: flex; justify-content: space-between; align-items: center;">
-						<span class="booking2"> Booked </span>
-						<span style="color: green"> Booking Confirmed! </span>
-						</div>
-					<% elsif @booking.status == 2 %>
-						<div style="display: flex; justify-content: space-between; align-items: center;">
-						<a class="booking" href="/food/booking/<%= @food.id %>"> Book Again </a>
-						<span style="color: red"> Booking Rejected! </span>
-						</div>
-					<% end %>
-				<% else %>
-					<a class="booking" href="/food/booking/<%= @food.id %>"> Book </a>
-				<% end %>
-			</div>
-			<br>
-		<% end %>
-		<div style="width: 97.3%; background-color: white; padding: 10px;">
-			<span style="color: black"> <%= @food.description %> </span> <br>
-		</div> <br>
-		<div style="width: 97.3%; background-color: white; padding: 10px;">
-			<div id="toggleOffer" style="display: flex; justify-content: space-between;"> 
-				<span style="font-size: 20px; color: blue"> Special Offers </span> 
-				<img src="http://www.iconarchive.com/download/i87622/icons8/ios7/Arrows-Up-4.ico" style="height: 20px; width: 20px;"> 
-			</div>
-			<% offers = getOffers("food", @food.id) %>
-			<div id="upDownOffer" style="border-top: 1px solid brown;">
-			<% offers.each do |offer| %>	
-				<li style="border: 1px solid brown; list-style: none; padding: 10px; border-top: none;">
-					<div style="display: flex; justify-content: space-between;">
-					<span style="font-size: 30px; color: green; flex-grow: 2;"> <%= offer.content %> </span>
-				
-					<% if sessionID %>
-						<% if sessionIdentity == "Owner" and @food.ownerID == sessionID %>
-						<form action="/food/offers/edit" method="get" style="display: inline-block;">
-							<input type="hidden" name="offerID" value="<%= offer.id %>">
-							<input type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjRZmhVq9cgBPnDMdzUbSoVHuu5Cb9jfU-c-2uRSDtmtSSTds2" title="Edit" name="submit" style="height: 30px; width: 30px">
-						</form>
-						<form action="food/offers/delete" method="get" style="display: inline-block; margin-left: 20px;">
-							<input type="hidden" name="offerID" value="<%= offer.id %>">
-							<input type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk2lZWsog-OrSsPBTFH35uIaUJu-Ge4Q1fXpd-xGzNYdkGhwpUnA" title="Delete" name="submit" style="height: 30px; width: 30px">
-						</form>
-						<% end %>
-					<% end %>
-					</div>
-					<span style="font-size: 14px;"> From: <%= offer.from %> <br>
-					To: <%= offer.to %>
-					</span>
-				</li>
-			<% end %>
-			</div>
-		</div>
-		<br>
-		<div style="width: 97.3%; background-color: white; padding: 10px;"">
-		<div id="toggleReview" style="display: flex; justify-content: space-between;"> 
-				<span style="font-size: 20px; color: blue"> Reviews </span> 
-				<img src="http://www.iconarchive.com/download/i87622/icons8/ios7/Arrows-Up-4.ico" style="height: 20px; width: 20px;"> 
-			</div>
-			<% if not sessionID %>
-				<span style="text-align: right; margin-left: 470px; color: grey"> <a href="/login"> Login</a> to Add Review </span> <br>
-				<style type="text/css">
-					a:link {
-    					color: grey;
-    					text-decoration: none;
-					}
-
-					a:visited {
-    					color: grey;
-					}
-
-					a:hover {
-						color: black;
-					}
-
-				</style>
-			<% end %>
-			<% reviews = getReviews("food", @food.id) %>
-			<div id="upDownReview" style="border-top: 1px solid brown;">
-			<% reviews.each do |review| %>
-				<% if review.content %>
-					<li class="reviews" id="review_<%= review.id %>" style="list-style: none; border: 1px solid brown; padding: 10px; border-top: none;">
-						<div style="display: flex; justify-content: space-between;">
-						<span style="font-size: 30px; color: magenta; flex-grow: 2"> <%= review.content %> </span>
-						<% if review.customerID == sessionID %>
-							<form action="/food/review/edit" method="get">
-								<input type="hidden" name="reviewID" value="<%= review.id %>">
-								<input type="image" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT0fzOpTjm8Q3X-xpKMTWiDEG4am6wW-nkZRYBOstF81W1jnncSmQ" title="Edit" style="height: 30px; width: 30px; margin-right: 10px;">
-							</form>
-							<form action="/food/review/delete" method="get" id="deleteButton">
-								<input type="hidden" name="reviewID" value="<%= review.id %>">
-								<input type="image" src="https://photos-1.dropbox.com/t/2/AAAqx-n_LET7iAyoE6kYiIWcrRhxXi1fJ6JLq7RON0F5Zw/12/655824313/jpeg/32x32/1/_/1/2/DeleteBin.jpg/EObcv6sFGAYgAigC/eolmBY5dXKxVPlPBQE5KL2DYjPz8vUSVJ9EPEOmrXMw?size=1280x960&size_mode=3" title="Delete" style="height: 30px; width: 30px;">
-							</form>
-						<% end %>
-						</div>
-						<span style="font-size: 18px; color: orange"> by <%= getCustomer(review.customerID).name %> </span> <br>
-						<span style="font-size: 15px; color: green"> Rating: <%= review.rating %>/5 </span> <br>
-					</li>
-				<% end %>
-			<% end %>
-			</div>
-		</div>
-		<br>
-		<div style="padding: 10px; width: 97.3%; background-color: white;">
-			<span style="color: blue; font-size: 20px;"> Owned by </span> <br>
-			<% owner = getOwner(@food.ownerID) %>
-			<span style="font-size: 25px; color: brown"> <%= owner.name %> </span> <br>
-			<span style="color: #666666; font-size: 15px;"> Phone: <%= owner.phone %> </span> <br>
-			<span style="color: #666666; font-size: 15px;""> Email: <%= owner.email %> </span> <br>
-			<span style="color: #666666; font-size: 15px;""> Address: <%= owner.address %>, <%= owner.city %> </span>
-		</div>
-
+		<%= render 'outlet', :@food => @food %>
 	<% else %>
-		<style type="text/css">
-			.center{
-				width: 65%;
-				background-color: #ffa912;
-				margin-top: 10px;
-				padding: 20px;
-			}
-		</style>
-
 		<% i=0 %>
 		<% items = [] %>
 		<% outlets.each do|outlet| %>
@@ -380,28 +69,22 @@
 		<% end %>
 		<% if items.any? %>
 			<div style="margin: 10px; display: flex;">
-						<% items.each do |item| %>
-							<form action="/food">
-								<input type="hidden" name="outletID" value="<%= item.id %>">
-								<input type="Image" src="<%= photo(item.id) %>" alt="<%= item.name %>" style="height: 200px; width: 220px; border-radius: 30%; border: 1px solid black; margin-right: 35px;" title="<%= item.name %>" name="photo">
-							</form>
-						<% end %>
+				<% items.each do |item| %>
+					<form action="/food">
+						<input type="hidden" name="outletID" value="<%= item.id %>">
+						<input type="Image" src="<%= photo(item.id) %>" alt="<%= item.name %>" style="height: 200px; width: 220px; border-radius: 30%; border: 1px solid black; margin-right: 35px;" title="<%= item.name %>" name="photo">
+					</form>
+				<% end %>
 			</div>
 		<% end %>
 	<% end %>
 </div>
 
 <div class="offers">
-	<div style="font-size: 30px; color: brown;"> Offers </div>
-	<div id="offers_inner" style="border-top:  1px solid brown">
+	<div style="font-size: 30px; color: brown; text-align: center;"> OFFERS </div> <br>
+	<div id="offers_inner" style="border: 1px solid brown">
 		<% @offers.each do |offer| %>
-			<li style="list-style: none; border: 1px solid brown; border-top: none; padding: 10px;">
-				<span style="font-size: 20px; color: red"> <%= offer.content %> </span> <br>
-				<span style="font-size: 15px; color: magenta"> 
-				@<a class="link" href="/redirect/food/<%= offer.outletID %>"><%= getFood(offer.outletID).name %></a> </span> <br>
-				<span style="font-size: 10px; color: green"> From: <%= offer.from %> <br>
-				To: <%= offer.to %> </span>
-			</li>
+			<%= render 'offers', offer: offer %>
 		<% end %>
 	</div>		
 </div>

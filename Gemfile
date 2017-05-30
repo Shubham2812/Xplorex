@@ -26,7 +26,8 @@ gem 'jquery-ui-rails'
 gem 'rails4-autocomplete'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'activeadmin', github: 'activeadmin'
+gem 'rails-api'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -1,0 +1,21 @@
+<li style="border: 1px solid brown; list-style: none; padding: 10px; border-top: none;">
+					<div style="display: flex; justify-content: space-between;">
+					<span style="font-size: 30px; color: green; flex-grow: 2;"> <%= offer.content %> </span>
+				
+					<% if sessionID %>
+						<% if sessionIdentity == "Owner" and @food.ownerID == sessionID %>
+						<form action="/food/offers/edit" method="get" style="display: inline-block;">
+							<input type="hidden" name="offerID" value="<%= offer.id %>">
+							<input type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjRZmhVq9cgBPnDMdzUbSoVHuu5Cb9jfU-c-2uRSDtmtSSTds2" title="Edit" name="submit" style="height: 30px; width: 30px">
+						</form>
+						<form action="food/offers/delete" method="get" style="display: inline-block; margin-left: 20px;">
+							<input type="hidden" name="offerID" value="<%= offer.id %>">
+							<input type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk2lZWsog-OrSsPBTFH35uIaUJu-Ge4Q1fXpd-xGzNYdkGhwpUnA" title="Delete" name="submit" style="height: 30px; width: 30px">
+						</form>
+						<% end %>
+					<% end %>
+					</div>
+					<span style="font-size: 14px;"> From: <%= offer.from %> <br>
+					To: <%= offer.to %>
+					</span>
+				</li>

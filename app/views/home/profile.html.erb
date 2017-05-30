@@ -23,34 +23,34 @@
 </head>
 <body>
 	<div style="display: flex; justify-content: space-around;">
-	<div style="display: flex; margin: 50px; align-items: center;">
-		<% if avatar %>
-			<img src="<%= avatar %>" style="height: 240px; width: 250px; margin-right: 50px; border: 1px solid grey">
-		<% else %>
-			<% if @user.gender == "Male" %>
-				<img src="/assets/avatar_male.png" style="height: 240px; width: 250px; margin-right: 50px; border: 1px solid grey">
+		<div class="profile">
+			<% if avatar %>
+				<img src="<%= avatar %>">
 			<% else %>
-				<img src="/assets/avatar_female.png" style="height: 240px; width: 250px; margin-right: 50px; border: 1px solid grey">
+				<% if @user.gender == "Male" %>
+					<img src="/assets/avatar_male.png">
+				<% else %>
+					<img src="/assets/avatar_female.png">
+				<% end %>
 			<% end %>
-		<% end %>
-		<div>
-			<fieldset style="width: 700px;">
-				<legend> Personal Details </legend>
-				<span class="name"> Name: </span> <span class="content"> <%= @user.name %> </span> <br>
-				<span class="name"> Email: </span> <span class="content"> <%= @user.email %> </span> <br>
-				<span class="name"> Password: </span> <span class="content"> <% @user.password.length.times do %>
-				<%= '*' %>
-				<% end %> </span> <br>
-				<span class="name"> Gender: </span> <span class="content"> <%= @user.gender %> </span> <br>
-			</fieldset> <br>
-			<fieldset>
-				<legend> Contact Details </legend>
-				<span class="name"> Phone: </span> <span class="content"> <%= @user.phone %> </span> <br>
-				<span class="name"> Address: </span> <span class="content"> <%= @user.address %> </span> <br>
-				<span class="name"> City: </span> <span class="content"> <%= @user.city %> </span>
-			</fieldset>
+			<div>
+				<fieldset>
+					<legend> Personal Details </legend>
+					<span class="name"> Name: </span> <span class="content"> <%= @user.name %> </span> <br>
+					<span class="name"> Email: </span> <span class="content"> <%= @user.email %> </span> <br>
+					<span class="name"> Password: </span> <span class="content"> <% @user.password.length.times do %>
+					<%= '*' %>
+					<% end %> </span> <br>
+					<span class="name"> Gender: </span> <span class="content"> <%= @user.gender %> </span> <br>
+				</fieldset> <br>
+				<fieldset>
+					<legend> Contact Details </legend>
+					<span class="name"> Phone: </span> <span class="content"> <%= @user.phone %> </span> <br>
+					<span class="name"> Address: </span> <span class="content"> <%= @user.address %> </span> <br>
+					<span class="name"> City: </span> <span class="content"> <%= @user.city %> </span>
+				</fieldset>
+			</div>
 		</div>
-	</div>
 	</div>
 	<div style="display: flex; justify-content: space-around;">
 	<form action="/profile/edit" method="get">

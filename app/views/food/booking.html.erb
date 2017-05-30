@@ -6,21 +6,24 @@
 <body>
 	<br><br>
 	<div style="display: flex; justify-content: space-around;">
-	<div style="border: 1px solid black; width: 60%; padding: 20px;">
+	<div class="booking_form">
 	Add Booking to <span style="font-size: 30px; color: green"> <%= @outlet.name %> </span> <br><br>
 	<form action="/food/addbooking/confirm/<%= @outlet.id %>" method="get"> 
 	<p style="color: grey">
 		No. of Persons &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="numPersons"> <br>
 		Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="date"> <br>
 		Time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="time" name="time"> <br>
-		<input type="submit" name="submit" value="Book">
-		<input type="reset">
 	</p>
+		<div class="booking_buttons">
+			<input class="booking_button" type="submit" name="submit" value="Book">
+			<input class="booking_button" type="reset">
+	
 	</form> 
 
-	<form action="/food/cancel" method="get">
-		<input type="submit" name="submit" value="Cancel">
-	</form>
+			<form action="/food/cancel" method="get">
+				<input class="booking_button" type="submit" name="submit" value="Cancel">
+			</form>
+		</div>
 	</div>
 	</div>
 </body>

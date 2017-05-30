@@ -23,11 +23,13 @@ function main()
 	var review_form = document.getElementById("review");
 	var review_text = document.getElementById("review_text");
 	var allReviews = document.getElementsByClassName("reviews");
-<<<<<<< HEAD
+
 	var deleteButton = document.getElementById("deleteButton");
 	console.log(allReviews);
 
+	if(visit[0])
 	visit[0].addEventListener("click", toggle);
+	
 	if(deleteButton)
 	deleteButton.addEventListener('submit', deleteMyReview);
 
@@ -57,13 +59,8 @@ function main()
 				alert("Error");
 			}
 		});
-
-		console.log(deleteButton.parentNode.parentNode.parentNode);
-		
-
 	}
-=======
->>>>>>> shubham
+
 
 	var accept_image = document.getElementsByClassName("accept")[0];
 	var reject_image = document.getElementsByClassName("reject")[0];
@@ -95,11 +92,8 @@ function main()
 			status = 'rejected'
 		else if(event.target.id.slice(0, 6) == 'cancel')
 			status = 'cancelled'
-		else if(event.target.id.slice(0, 6) == 'cancel')
+		else if(event.target.id.slice(0, 6) == 'delete')
 			status = 'deleted'
-		
-		console.log("STATUS");
-		console.log(status);
 		
 		var url = '/food/booking/status/ajax';
 		var info = {
@@ -193,29 +187,6 @@ function main()
 		}
 	} 
 
-<<<<<<< HEAD
-	console.log($("#toggleOffer")[0].children[1].src);
-	$("#toggleOffer").click(function(){
-		$("#upDownOffer").toggle(500);
-		if($("#toggleOffer")[0].children[1].src == 'https://image.flaticon.com/icons/png/128/118/118738.png')
-		$("#toggleOffer")[0].children[1].src = 'http://www.iconarchive.com/download/i87622/icons8/ios7/Arrows-Up-4.ico'
-		else
-		$("#toggleOffer")[0].children[1].src = 'https://image.flaticon.com/icons/png/128/118/118738.png'
-	})
-
-	console.log($("#toggleReview")[0].children[1].src);
-	$("#toggleReview").click(function(){
-		$("#upDownReview").toggle(500);
-		if($("#toggleReview")[0].children[1].src == 'https://image.flaticon.com/icons/png/128/118/118738.png')
-		$("#toggleReview")[0].children[1].src = 'http://www.iconarchive.com/download/i87622/icons8/ios7/Arrows-Up-4.ico'
-		else
-		$("#toggleReview")[0].children[1].src = 'https://image.flaticon.com/icons/png/128/118/118738.png'
-	})
-
-}
-
-window.addEventListener("load", function(event){
-=======
 	search_form[2].addEventListener('keydown', function(){
 		var search_results = document.getElementById('search_results')
 		if(search_form[2].value.length > 1)
@@ -259,6 +230,11 @@ window.addEventListener("load", function(event){
 		}
 	})
 
+	search_form[2].addEventListener('focus', function(){
+		this.style.border = '0px';
+		console.log("focussed")
+	})
+
 	var search_results = document.getElementById('search_results')
 	if(search_results)
 	{ 
@@ -280,9 +256,50 @@ window.addEventListener("load", function(event){
 		})
 	}
 
+	if($("#toggleOffer")[0])
+	{	console.log($("#toggleOffer")[0].children[1].src);
+		$("#toggleOffer").click(function(){
+			$("#upDownOffer").toggle(500);
+			if($("#toggleOffer")[0].children[1].src == 'https://image.flaticon.com/icons/png/128/118/118738.png')
+			$("#toggleOffer")[0].children[1].src = 'http://www.iconarchive.com/download/i87622/icons8/ios7/Arrows-Up-4.ico'
+			else
+			$("#toggleOffer")[0].children[1].src = 'https://image.flaticon.com/icons/png/128/118/118738.png'
+		})
+	}
+	if($("#toggleReview")[0])
+	{	console.log($("#toggleReview")[0].children[1].src);
+		$("#toggleReview").click(function(){
+			$("#upDownReview").toggle(500);
+			if($("#toggleReview")[0].children[1].src == 'https://image.flaticon.com/icons/png/128/118/118738.png')
+			$("#toggleReview")[0].children[1].src = 'http://www.iconarchive.com/download/i87622/icons8/ios7/Arrows-Up-4.ico'
+			else
+			$("#toggleReview")[0].children[1].src = 'https://image.flaticon.com/icons/png/128/118/118738.png'
+		})
+	}
+
+	var dropbtn = document.getElementsByClassName("dropbtn")[0]
+	if(dropbtn)
+	{	dropbtn.addEventListener("click", function(){
+			document.getElementById("myDropdown").classList.toggle("show");
+
+		})
+	}
+
+	window.onclick = function(event){
+	    if (!event.target.matches('.dropbtn')) 
+	    {
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+		    var i;
+			for (i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('show')) 
+					openDropdown.classList.remove('show');			      
+			}
+		}
+	}
 }
 
+
 window.addEventListener("load", function(){
->>>>>>> shubham
 	main();
 })

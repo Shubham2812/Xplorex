@@ -2,18 +2,55 @@ body{
 	padding: 0px;
 }
 
+.home_content{
+			width: 98%;
+			background-color: pink;
+			padding: 10px;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			margin-top: 30px;
+		}
+
+		.home_content > div {
+			height: 300px;
+			width: 350px;
+			background-color: white;
+			margin: 30px;
+		}
+
+		.icon{
+			height: 100%;
+			width: 100%;
+		}
+
+		.icon:hover{
+			transform: scale(1.1);
+		}
+
+.login_signup{
+	display: flex;
+	width: 230px;
+	justify-content: space-between;
+}
+
+
 #search_results{
  	display: none;
  	border: 1px solid grey;
  	border-top: 0;
  	border-bottom: 0;
- 	width: 248px;
+ 	width: 250px;
+ 	position: relative;
+ 	z-index: 1;
  }
 
 #search_results > div{
  	border-bottom: 1px solid grey;
  	border-top: 0;
- 	width: 248px;
+ 	width: 240px;
+ 	background-color: white;
+ 	padding: 5px;
 }
 
 #search_results > div:hover{
@@ -22,7 +59,7 @@ body{
 }
 
 .search{
-	width: 248px;
+	width: 245px;
 	border: 1px solid #bfbfbf;
 	display: flex;
 	justify-content:  space-between;
@@ -45,7 +82,464 @@ body{
 
 .search_container{
 	margin-bottom: 5px;
+	display: flex;
+	flex-direction: row-reverse;
+	position: absolute;
+	width: 98.5%;
 }
+
+.options{
+  		padding: 5px;
+  		background-color: pink;
+  		color: brown;
+  		border: 0px;
+  	}
+
+  	.options:hover{
+  		cursor: pointer;
+  		box-shadow: 0 0 30px brown;
+  		border: 0px;
+  	}
+
+.edit_reset{
+	display: flex;
+	justify-content: space-around;
+	padding: 10px;
+}
+
+.edit_reset > input, #cancel_button{
+	padding: 5px;
+	width: 100px;
+	height: 30px;
+	border-radius: 5%;
+}
+
+.edit_reset > input:hover, #cancel_button:hover{
+	cursor: pointer;	
+}
+
+.main{
+			display: flex;
+			justify-content: space-between;
+			margin-top: 20px;
+
+		}
+
+		.sidebar{
+			width: 15%;
+			background-color: #ffff33;
+			margin-top: 10px;
+			margin-right: 15px;
+			padding: 20px;
+		}
+
+		.offers{
+			width: 15%;
+			background-color: pink;
+			margin-top: 10px;
+			margin-left: 15px;
+			display: inline-block;
+			padding: 10px;
+		}
+
+		#offers_inner{
+			overflow-y: auto;
+			height: 800px;
+			border-bottom: 1px solid brown;
+		}
+
+		#offers_inner > li{
+			display: flex;
+			flex-direction: column;
+		}
+
+		.center{
+			width: 65%;
+			background-color: #ffa912;
+			margin-top: 10px;
+			padding: 20px;
+		}
+
+
+		.button{
+			width: 130px;
+			height: 50px;
+			margin-left: 15px;
+			margin-top: 15px;
+			margin-bottom: 15px;
+			font-size: 120%;
+			border-radius: 10%;
+			background-color: white;			
+		}
+
+		.button:hover{
+			transform: scale(1.2);
+			cursor: pointer;
+			background-color: cyan;
+		}
+
+		.buttons{
+			width: 80%;
+			margin: auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.link{
+			text-decoration: none;
+			color: magenta;
+		}
+
+		.link:hover{
+			color: red;
+
+		}
+
+		.booking{
+			text-decoration: none;
+			background-color: #E0F01A;
+			color: red;
+			border: 1px solid brown;
+			padding: 10px;
+			border-radius: 20%;
+		}
+
+		.booking1, .booking2{
+			border: 1px solid grey;
+			padding: 10px;
+			background-color: grey;
+			color: black;
+			border-radius: 20%;
+		}
+
+		#review, .visited{
+			display: none;
+		}
+
+		#toggleReview, #toggleOffer:hover{
+			cursor: pointer;
+		}
+
+		.header{
+		width: 98%;
+		border: 1px solid red;
+		padding: 10px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 5px;
+	}
+
+	.options{
+  		padding: 5px;
+  		background-color: pink;
+  		color: brown;
+  		border: 0px;
+  		height: 30px;
+  		width: 100px;
+  	}
+
+  	.options:hover{
+  		cursor: pointer;
+  		box-shadow: 0 0 30px brown;
+  		border: 0px;
+  	}
+
+				.dropbtn {
+				    cursor: pointer;
+				}
+
+				.dropbtn:hover, .dropbtn:focus {
+				    background-color: #3e8e41;
+				}
+
+				.dropdown {
+				    position: relative;
+				    display: inline-block;
+				}
+
+				.dropdown-content {
+				    display: none;
+				    position: absolute;
+				    background-color: #f9f9f9;
+				    min-width: 120px;
+				    overflow: auto;
+				    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				    z-index: 1;
+				}
+
+				.dropdown-content a {
+				    color: black;
+				    padding: 12px 16px;
+				    text-decoration: none;
+				    display: block;
+				    border: 1px solid grey;
+				    border-top: none;
+				    font-size: 14px;
+				}
+
+				.dropdown a:hover {background-color: orange}
+
+				.show{
+					display:block;
+				}
+
+	.footer{
+		width: 97%;
+		background-color: #322514;
+		color: white;
+		margin-top: 50px;
+		padding: 20px;
+	}
+
+	.footer_contact{
+		width: 50%;
+	}
+
+
+	.footer_contact > div{
+		width: 60%;
+	}
+
+	.footer_contact > div > p{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.footer_upper, .footer_lower{
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	} 
+	.footer_time, .footer_contact{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#outlet_info{
+		height: 80px; 
+		width: 97.3%; 
+		background-color: white; 
+		padding: 10px; 
+		padding-bottom: 20px;"
+	}
+
+	.login_form{
+		width: 35%; 
+		border: 1px solid grey; 
+		padding: 20px;
+	}
+
+	.signup_form{
+		width: 45%;
+	}
+
+	.review_form{
+		border: 1px solid black; 
+		width: 40%; 
+		padding: 20px;
+	}
+
+	.review_buttons, .booking_buttons{
+		display: flex;
+		justify-content: space-around;
+	}
+
+	.review_button, .booking_button{
+		width: 100px;
+		height: 30px;
+	}
+
+	.review_button:hover, .booking_button{
+		cursor: pointer;
+	}
+
+	.booking_form{
+		border: 1px solid black; 
+		width: 60%; 
+		padding: 20px;
+	}
+
+	.profile{
+		display: flex; 			
+		margin: 50px; 
+		align-items: center;
+	}
+
+	.profile > img{
+		height: 240px; 
+		width: 250px; 
+		margin-right: 50px; 
+		border: 1px solid grey;
+	}
+
+	.edit_profile_form{
+		width: 45%;
+	}
+
+	.outlet_form{
+		width: 45%;
+	}
+
+	@media(max-width: 720px)
+	{
+		.header{
+			width: 95%;
+			margin: auto;
+		}
+		
+		.search_container{
+			width: 96.5%;
+			margin: auto;
+			margin-top: 10px;
+		}
+
+		.home_content{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 95%;
+			margin: auto;
+			margin-top: 40px;
+		}
+
+		.footer{
+			width: 93%;
+			margin: auto;
+			margin-top: 20px;
+		}
+
+		.footer_upper{
+			flex-direction: column;
+		}
+
+		.footer_contact{
+			width: 70%;
+		}
+
+		.footer_contact > div{
+			width: 100%;
+		}
+
+		.header_content > div{
+			flex-direction: column;
+		}
+
+		.login_signup{
+			flex-direction: column;
+			width: 120px;
+			align-items: center;
+			height: 70px;
+		}
+
+		.main{
+			flex-direction: column;
+			margin-top: 40px;
+		}
+
+		.sidebar, .center, .offers{
+			width: 90%;
+			margin: auto;
+		}
+
+		.buttons{
+			width: 100%;
+		}
+
+		.buttons > form{
+			display: flex;
+			flex-direction: column;
+			margin: auto;
+		}
+
+		.buttons > form > input{
+			margin: 0px;
+			height: 30px;
+			width: 200px;
+			margin-bottom: 10px;
+		}
+
+		.offers{
+			margin-top: 20px;
+			padding: 20px;
+		}
+
+		#offers_inner > li{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.center{
+			margin-top: 20px;
+		}
+
+		.center > div{
+			flex-direction: column;
+			align-items: center;
+		}
+
+		#outlet_info{
+			width: 95.3%;
+		}
+
+		.login_form{
+			width: 70%;
+		}
+
+		.signup_form{
+			width: 90%;
+			margin-top: 50px;
+		}
+
+		.review_form{
+			width: 90%;
+		}
+
+		.booking_form{
+			width: 80%;
+		}
+
+		.profile{
+			flex-direction: column;
+			width: 80%;
+		}
+
+		.profile > div{
+			width: 100%;
+		}
+
+		.profile > div > fieldset{
+			width: 100%;
+		}
+
+		.profile > img{
+			margin: 0px;
+			margin-bottom: 20px;
+		}
+
+		.edit_profile_form{
+			width: 90%;
+		}
+
+		.timeline_container{
+			margin-top: 20px;
+		}
+
+		.main{
+			align-items: center;
+		}
+
+		.outlet_form{
+			width: 80%;
+			margin-top: 20px;
+		}
+
+	}
+
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

@@ -92,7 +92,10 @@ class HomeController < ApplicationController
 	end
 
 	def search_result
-		outlet = Food.find_by(name: params[:search]) 
-		return redirect_to controller: 'food', action: 'food', outletID: outlet.id
+		outlet = Food.find_by(name: params[:search])
+		if outlet
+			return redirect_to controller: 'food', action: 'food', outletID: outlet.id
+		end
+		return redirect_to '/'
 	end
 end

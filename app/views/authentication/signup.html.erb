@@ -26,47 +26,45 @@
 <span style="color: grey"> Fields Marked with * are Mandatory! </span>
 
 <div style="display: flex; justify-content: space-around;">
-<div style="width: 45%">
-	<form action="/addUser" method="post" enctype="multipart/form-data">
-		<div style="display: flex; justify-content: space-around;">
-		<span id="identity_color"> <span style="color: grey"> Identity* </span> 
-				<input type="radio" id="radio_customer" name="identity" value="Customer"> Customer 
-				<input type="radio" id="radio_owner" name="identity" value="Owner"> Owner
-				<br><br>
-		</span>
-		</div> 
-		<fieldset>
-			<legend style="color: blue; font-size: 20px;"> Personal Information </legend>
-			<p style="color: grey">
-			Name* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="name" required> <br>
-			E-Mail* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="email" required> <br>
-			Password* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="password" name="password" required> <br>
-			Gender &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Male"> <span style="color: black"> Male 
-				&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Female"> Female
-				&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Transgender"> Transgender <br> </span>
-			Photo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="file" name="photo">
-			</p>
-			</fieldset>
+	<div class="signup_form">
+		<form action="/addUser" method="post" enctype="multipart/form-data">
+			<div style="display: flex; justify-content: space-around;">
+			<span id="identity_color"> <span style="color: grey"> Identity* </span> 
+					<input type="radio" id="radio_customer" name="identity" value="Customer"> Customer 
+					<input type="radio" id="radio_owner" name="identity" value="Owner"> Owner
+					<br><br>
+			</span>
+			</div> 
+			<fieldset>
+				<legend style="color: blue; font-size: 20px;"> Personal Information </legend>
+				<p style="color: grey">
+				Name* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="name" required> <br>
+				E-Mail* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="email" required> <br>
+				Password* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="password" name="password" required> <br>
+				Gender &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Male"> <span style="color: black"> Male 
+					&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Female"> Female
+					&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="Transgender"> Transgender <br> </span>
+				Photo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="file" name="photo">
+				</p>
+				</fieldset>
 
-		<br>
-		<fieldset>
-			<legend style="color: blue; font-size: 20px;"> Contact Details </legend>
-			<p style="color: grey">
-			Phone* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="phone" maxlength="10" max="9999999999" min="0000000000" required> <br>
-			Address &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="address"> <br>
-			City &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="city"> <br>
-			</fieldset>
-			</p>
-		<div style="display: flex; justify-content: space-around;">
-			<div>
-			<input type="submit" name="submit" value="Signup" style="margin-right: 20px;"> 
-			<input type="reset">
+			<br>
+			<fieldset>
+				<legend style="color: blue; font-size: 20px;"> Contact Details </legend>
+				<p style="color: grey">
+				Phone* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="phone" maxlength="10" max="9999999999" min="0000000000" required> <br>
+				Address &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="address"> <br>
+				City &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="city"> <br>
+				</fieldset>
+				</p>
+			<div style="display: flex; justify-content: space-around;">
+				<div>
+				<input type="submit" name="submit" value="Signup" style="margin-right: 20px;"> 
+				<input type="reset">
+				</div>
 			</div>
-		</div>
-	</form>
-
-<br>
-</div>
+		</form>
+	</div>
 </div>
 
 <div style="display: flex; justify-content: space-around;">

@@ -41,43 +41,44 @@
 <body>
 
 	<div style="display: flex; justify-content: space-around; margin-top: 50px;">	
-	<table>
+		<table>
+			<tr>
+				<th> S. No </th>
+				<th> Outlet </th>
+				<th> No. of Persons </th>
+				<th> Date </th>
+				<th> Time </th>
+				<th> Status </th>
+				<th> Action </th>
+			</tr> 
+		<% i = 1 %>
+		<% @bookings.each do |booking| %>
 		<tr>
-			<th> S. No </th>
-			<th> Outlet </th>
-			<th> No. of Persons </th>
-			<th> Date </th>
-			<th> Time </th>
-			<th> Status </th>
-			<th> Action </th>
-		</tr> 
-	<% i = 1 %>
-	<% @bookings.each do |booking| %>
-	<tr>
-			<td> <%= i %></td>
-			<td> <%= getFood(booking.outletID).name %> </td>
-			<td> <%= booking.numPersons %> </td>
-			<td> <%= booking.date %> </td>
-			<td> <%= booking.time.hour.to_s + ":" + booking.time.min.to_s %> </td> 
-			<% if booking.status == 0 %> 
-				<td> Pending... </td>
-				<td>
-				<a href="/food/booking/cancel/<%= booking.id %>"> <img src="https://photos-2.dropbox.com/t/2/AAD0gWtwE7o312Obhn9qF08hmF31mZj-eZIckWzs5aq6gQ/12/655824313/jpeg/32x32/1/_/1/2/DeleteBin.jpg/EObcv6sFGAcgAigC/eolmBY5dXKxVPlPBQE5KL2DYjPz8vUSVJ9EPEOmrXMw?size=1280x960&size_mode=3" style="height: 30px; width: 30px;"> </a>
-				</td>
-			<% elsif booking.status == 1 %>
-				<td style="color: green"> Confirmed! </td>
-				<td>
-				<a href="/food/booking/cancel/<%= booking.id %>"> <img class="cancel" id="cancel_<%= booking.id %>" src="http://www.clker.com/cliparts/V/O/l/G/L/k/cancel-button-hi.png" style="height: 30px; width: 50px;"> </a>
-				</td>
-			<% else %>
-				<td style="color: red"> Rejected! </td>
-				<td>
-				<a href="/food/booking/cancel/<%= booking.id %>"> <img class="delete" id="delete_<%= booking.id %>" src="https://photos-2.dropbox.com/t/2/AAD0gWtwE7o312Obhn9qF08hmF31mZj-eZIckWzs5aq6gQ/12/655824313/jpeg/32x32/1/_/1/2/DeleteBin.jpg/EObcv6sFGAcgAigC/eolmBY5dXKxVPlPBQE5KL2DYjPz8vUSVJ9EPEOmrXMw?size=1280x960&size_mode=3" style="height: 30px; width: 30px;"> </a>
-				</td>
-			<% end %>
-	</tr>
-	<% i += 1 %>
-	<% end %>
-
+				<td> <%= i %></td>
+				<td> <%= getFood(booking.outletID).name %> </td>
+				<td> <%= booking.numPersons %> </td>
+				<td> <%= booking.date %> </td>
+				<td> <%= booking.time.hour.to_s + ":" + booking.time.min.to_s %> </td> 
+				<% if booking.status == 0 %> 
+					<td> Pending... </td>
+					<td>
+					<a href="/food/booking/cancel/<%= booking.id %>"> <img src="images/delete_bin.jpg" style="height: 30px; width: 30px;"> </a>
+					</td>
+				<% elsif booking.status == 1 %>
+					<td style="color: green"> Confirmed! </td>
+					<td>
+					<a href="/food/booking/cancel/<%= booking.id %>"> <img class="cancel" id="cancel_<%= booking.id %>" src="images/cancel_booking.png" style="height: 30px; width: 50px;"> </a>
+					</td>
+				<% else %>
+					<td style="color: red"> Rejected! </td>
+					<td>
+					<a href="/food/booking/cancel/<%= booking.id %>"> <img class="delete" id="delete_<%= booking.id %>" src="images/delete_bin.jpg" style="height: 30px; width: 30px;"> </a>
+					</td>
+				<% end %>
+		</tr>
+		<% i += 1 %>
+		<% end %>
+	</table>
+	</div>
 </body>
 </html>
