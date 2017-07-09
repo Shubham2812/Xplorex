@@ -66,7 +66,7 @@ function main()
 	var reject_image = document.getElementsByClassName("reject")[0];
 	var cancel_image = document.getElementsByClassName("cancel")[0];
 	var delete_image = document.getElementsByClassName("delete")[0];
-
+	
 	var search_form = document.getElementById('search');
 
 	console.log(accept_image);
@@ -255,25 +255,29 @@ function main()
 			
 		})
 	}
-
-	if($("#toggleOffer")[0])
-	{	console.log($("#toggleOffer")[0].children[1].src);
-		$("#toggleOffer").click(function(){
+	var toggleOffer = document.getElementById("toggleOffer")
+	if(toggleOffer)
+	{	var status = false;
+		toggleOffer.addEventListener('click', function(){
 			$("#upDownOffer").toggle(500);
-			if($("#toggleOffer")[0].children[1].src == 'https://image.flaticon.com/icons/png/128/118/118738.png')
-			$("#toggleOffer")[0].children[1].src = 'http://www.iconarchive.com/download/i87622/icons8/ios7/Arrows-Up-4.ico'
+			if(status)
+			this.children[1].src = '/images/up_arrow.ico';
 			else
-			$("#toggleOffer")[0].children[1].src = 'https://image.flaticon.com/icons/png/128/118/118738.png'
+			this.children[1].src = '/images/down_arrow.png';
+			status = !status
 		})
 	}
-	if($("#toggleReview")[0])
-	{	console.log($("#toggleReview")[0].children[1].src);
-		$("#toggleReview").click(function(){
+
+	var toggleReview = document.getElementById("toggleReview")
+	if(toggleReview)
+	{	var status2 = false;
+		toggleReview.addEventListener('click', function(){
 			$("#upDownReview").toggle(500);
-			if($("#toggleReview")[0].children[1].src == 'https://image.flaticon.com/icons/png/128/118/118738.png')
-			$("#toggleReview")[0].children[1].src = 'http://www.iconarchive.com/download/i87622/icons8/ios7/Arrows-Up-4.ico'
+			if(status2)
+			this.children[1].lastElementChild.src = '/images/up_arrow.ico';
 			else
-			$("#toggleReview")[0].children[1].src = 'https://image.flaticon.com/icons/png/128/118/118738.png'
+			this.children[1].lastElementChild.src = '/images/down_arrow.png';
+			status2 = !status2
 		})
 	}
 

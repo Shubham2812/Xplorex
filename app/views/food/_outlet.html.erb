@@ -69,9 +69,9 @@
 				<div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
 				<span style="font-size: 20px; color: brown"> <%= @food.location %> </span>
 				<div style="display: flex; align-items: center">
-					<img src="https://photos-4.dropbox.com/t/2/AACusXr0pBqiB44lkvwG5lFggCRWge-DEplg1UbkUfZEXw/12/655824313/png/32x32/1/_/1/2/Like.png/EObcv6sFGAQgAigC/l8pjmjwkCWbSWW2KS2RI0h7kGQX4OgchoxqeIkhAGMI?size=1280x960&size_mode=3" style="height: 30px; width: 30px;">
+					<img src="/images/like.png" style="height: 30px; width: 30px;">
 					<span style="font-size: 25px;"> &nbsp;<%= likes(@food.id) %> </span>
-					<img src="https://photos-2.dropbox.com/t/2/AABykOviim7omIusWWiMbLfY-HmJVGU6CqPhgYzaWiPa8Q/12/655824313/jpeg/32x32/1/_/1/2/Dislike.jpg/EObcv6sFGAUgAigC/_WxltPfHY6ox6W8q2VSMqO6d88pehSnQ91uFCh4B-Eg?size=1280x960&size_mode=3" style="height: 30px; width: 30px; margin-left: 40px;">
+					<img src="/images/dislike.jpg" style="height: 30px; width: 30px; margin-left: 40px;">
 					<span style="font-size: 25px;"> &nbsp;<%= dislikes(@food.id) %> </span>
 				</div>
 				</div>
@@ -109,7 +109,7 @@
 		<div style="width: 97.3%; background-color: white; padding: 10px;">
 			<div id="toggleOffer" style="display: flex; justify-content: space-between;"> 
 				<span style="font-size: 20px; color: blue"> Special Offers </span> 
-				<img src="http://www.iconarchive.com/download/i87622/icons8/ios7/Arrows-Up-4.ico" style="height: 20px; width: 20px;"> 
+				<img src="/images/up_arrow.ico" style="height: 20px; width: 20px;"> 
 			</div>
 			<% offers = getOffers("food", @food.id) %>
 			<div id="upDownOffer" style="border-top: 1px solid brown;">
@@ -141,7 +141,7 @@
 
 						</style>
 					<% end %>
-					<img src="http://www.iconarchive.com/download/i87622/icons8/ios7/Arrows-Up-4.ico" style="height: 20px; width: 20px;"> 
+					<img src="/images/up_arrow.ico" style="height: 20px; width: 20px;"> 
 				</div>
 			</div>
 			

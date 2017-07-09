@@ -43,6 +43,8 @@ body{
  	width: 250px;
  	position: relative;
  	z-index: 1;
+ 	top: 30px;
+ 	left: 252px;
  }
 
 #search_results > div{
